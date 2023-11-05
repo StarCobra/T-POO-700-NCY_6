@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: api
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      - MIX_ENV=dev
+    volumes:
+      - ./api:/app_api
+    working_dir: /app_api
+    ports:
+      - "4000:4000"
+    depends_on:
+      - database
+
+  frontend:
+    build:
+      context: app
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      - URL_FRONT=dev
+    working_dir: /app
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+
+  database:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=db_time_manager
