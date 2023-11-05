@@ -3,8 +3,8 @@ import { ref } from 'vue';
 import {
   createWorkingTime,
   updateWorkingTime,
-  deleteWorkingTime
-} from '@/components/WorkingTime.js';
+  removeWorkingTime
+} from '@/services/WorkingTimeManager';
 
 let userID = ref('');
 let workingtimeID = ref('');
@@ -176,7 +176,7 @@ let endDateTimeTime = ref('');
           <button
             class="body-row-input-item"
             id="btn-delete-workingtime"
-            @click="deleteWorkingTime(userID, workingtimeID, $event)"
+            @click="removeWorkingTime(userID, workingtimeID, $event)"
           >
             Submit
           </button>

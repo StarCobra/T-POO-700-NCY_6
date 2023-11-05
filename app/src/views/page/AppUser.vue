@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { getAllUsers, getUser, createUser, updateUser, deleteUser } from '@/components/User.js';
+import { getAllUsers, getUser, createUser, updateUser, removeUser } from '@/services/UserManager';
 
 let userID = ref('');
 let username = ref('');
@@ -27,25 +27,25 @@ let email = ref('');
         <form class="body-form-flex-item" action="" method="post">
           <div class="body-row-field">
             <input
-              class="body-row-field-item"
-              type="text"
-              id="input-username"
-              placeholder="username"
-              v-model="username"
+                class="body-row-field-item"
+                type="text"
+                id="input-username"
+                placeholder="username"
+                v-model="username"
             />
             <input
-              class="body-row-field-item"
-              type="text"
-              id="input-email"
-              placeholder="email"
-              v-model="email"
+                class="body-row-field-item"
+                type="text"
+                id="input-email"
+                placeholder="email"
+                v-model="email"
             />
           </div>
           <div class="body-row-input">
             <button
-              class="body-row-input-item"
-              id="btn-get-user"
-              @click="getUser(username, email, $event)"
+                class="body-row-input-item"
+                id="btn-get-user"
+                @click="getUser(username, email, $event)"
             >
               Submit
             </button>
@@ -58,25 +58,25 @@ let email = ref('');
         <form class="body-form-flex-item" action="" method="post">
           <div class="body-row-field">
             <input
-              class="body-row-field-item"
-              type="text"
-              id="input-username"
-              placeholder="username"
-              v-model="username"
+                class="body-row-field-item"
+                type="text"
+                id="input-username"
+                placeholder="username"
+                v-model="username"
             />
             <input
-              class="body-row-field-item"
-              type="text"
-              id="input-email"
-              placeholder="email"
-              v-model="email"
+                class="body-row-field-item"
+                type="text"
+                id="input-email"
+                placeholder="email"
+                v-model="email"
             />
           </div>
           <div class="body-row-input">
             <button
-              class="body-row-input-item"
-              id="btn-create-user"
-              @click="createUser(username, email, $event)"
+                class="body-row-input-item"
+                id="btn-create-user"
+                @click="createUser(username, email, $event)"
             >
               Submit
             </button>
@@ -89,32 +89,32 @@ let email = ref('');
         <form class="body-form-flex-item" action="" method="post">
           <div class="body-row-field">
             <input
-              class="body-row-field-item"
-              type="text"
-              id="input-userID"
-              placeholder="userID"
-              v-model="userID"
+                class="body-row-field-item"
+                type="text"
+                id="input-userID"
+                placeholder="userID"
+                v-model="userID"
             />
             <input
-              class="body-row-field-item"
-              type="text"
-              id="input-username"
-              placeholder="username"
-              v-model="username"
+                class="body-row-field-item"
+                type="text"
+                id="input-username"
+                placeholder="username"
+                v-model="username"
             />
             <input
-              class="body-row-field-item"
-              type="text"
-              id="input-email"
-              placeholder="email"
-              v-model="email"
+                class="body-row-field-item"
+                type="text"
+                id="input-email"
+                placeholder="email"
+                v-model="email"
             />
           </div>
           <div class="body-row-input">
             <button
-              class="body-row-input-item"
-              id="btn-update-user"
-              @click="updateUser(userID, username, email, $event)"
+                class="body-row-input-item"
+                id="btn-update-user"
+                @click="updateUser(userID, username, email, $event)"
             >
               Submit
             </button>
@@ -127,18 +127,18 @@ let email = ref('');
         <form class="body-form-flex-item" action="" method="post">
           <div class="body-row-field">
             <input
-              class="body-row-field-item"
-              type="text"
-              id="input-userID"
-              placeholder="userID"
-              v-model="userID"
+                class="body-row-field-item"
+                type="text"
+                id="input-userID"
+                placeholder="userID"
+                v-model="userID"
             />
           </div>
           <div class="body-row-input">
             <button
-              class="body-row-input-item"
-              id="btn-delete-user"
-              @click="deleteUser(userID, $event)"
+                class="body-row-input-item"
+                id="btn-delete-user"
+                @click="removeUser(userID, $event)"
             >
               Submit
             </button>
@@ -172,8 +172,8 @@ let email = ref('');
   padding: 8px;
 
   box-shadow:
-    16px 16px 32px #1c1c1c,
-    -16px -16px 32px #343434;
+      16px 16px 32px #1c1c1c,
+      -16px -16px 32px #343434;
 }
 
 .body-form-flex-item {
@@ -204,8 +204,8 @@ let email = ref('');
   border-radius: 50px;
   background: #dddddd;
   box-shadow:
-    inset 2px 2px 8px #bebcbc,
-    inset -2px -2px 8px #fffefe;
+      inset 2px 2px 8px #bebcbc,
+      inset -2px -2px 8px #fffefe;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -230,8 +230,8 @@ let email = ref('');
   color: #dddddd;
   background: linear-gradient(145deg, #333642, #2b2d38);
   box-shadow:
-    4px 4px 8px #9b9b9b,
-    -4px -4px 8px #ffffff;
+      4px 4px 8px #9b9b9b,
+      -4px -4px 8px #ffffff;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -242,8 +242,8 @@ let email = ref('');
   color: #dddddd;
   background: #30323e;
   box-shadow:
-    inset 12px 12px 24px #22232b,
-    inset -12px -12px 24px #3e4151;
+      inset 12px 12px 24px #22232b,
+      inset -12px -12px 24px #3e4151;
 }
 
 /*End Input*/

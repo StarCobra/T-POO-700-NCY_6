@@ -1,7 +1,7 @@
 <script lang="ts">
-import HomeIcon from '../../assets/SVG/home_white.vue';
-import DashIcon from '../../assets/SVG/dashboard_white.vue';
-import MenuIcon from '../../assets/SVG/menu_white.vue';
+import HomeIcon from '../assets/SVG/home_white.vue';
+import DashIcon from '../assets/SVG/dashboard_white.vue';
+import MenuIcon from '../assets/SVG/menu_white.vue';
 
 export default {
   name: 'App',
@@ -34,6 +34,7 @@ export default {
       }
     },
     pageSwap(index: string) {
+      console.log("pageSwap",index);
       let AppBody = document.getElementById('AppBody');
       let AppUser = document.getElementById('AppUser');
       let AppClock = document.getElementById('AppClock');
@@ -42,47 +43,47 @@ export default {
       if (AppBody != null && AppUser != null && AppClock != null && AppWorkingTime != null) {
         switch (index) {
           case 'dashboard':
-            {
-              if (AppBody.classList.contains('disable')) {
-                AppBody.classList.remove('disable');
-                if (!AppUser.classList.contains('disable')) AppUser.classList.add('disable');
-                if (!AppClock.classList.contains('disable')) AppClock.classList.add('disable');
-                if (!AppWorkingTime.classList.contains('disable'))
-                  AppWorkingTime.classList.add('disable');
-              }
+          {
+            if (AppBody.classList.contains('disable')) {
+              AppBody.classList.remove('disable');
+              if (!AppUser.classList.contains('disable')) AppUser.classList.add('disable');
+              if (!AppClock.classList.contains('disable')) AppClock.classList.add('disable');
+              if (!AppWorkingTime.classList.contains('disable'))
+                AppWorkingTime.classList.add('disable');
             }
+          }
             break;
           case 'user':
-            {
-              if (AppUser.classList.contains('disable')) {
-                AppUser.classList.remove('disable');
-                if (!AppBody.classList.contains('disable')) AppBody.classList.add('disable');
-                if (!AppClock.classList.contains('disable')) AppClock.classList.add('disable');
-                if (!AppWorkingTime.classList.contains('disable'))
-                  AppWorkingTime.classList.add('disable');
-              }
+          {
+            if (AppUser.classList.contains('disable')) {
+              AppUser.classList.remove('disable');
+              if (!AppBody.classList.contains('disable')) AppBody.classList.add('disable');
+              if (!AppClock.classList.contains('disable')) AppClock.classList.add('disable');
+              if (!AppWorkingTime.classList.contains('disable'))
+                AppWorkingTime.classList.add('disable');
             }
+          }
             break;
           case 'clock':
-            {
-              if (AppClock.classList.contains('disable')) {
-                AppClock.classList.remove('disable');
-                if (!AppBody.classList.contains('disable')) AppBody.classList.add('disable');
-                if (!AppUser.classList.contains('disable')) AppUser.classList.add('disable');
-                if (!AppWorkingTime.classList.contains('disable'))
-                  AppWorkingTime.classList.add('disable');
-              }
+          {
+            if (AppClock.classList.contains('disable')) {
+              AppClock.classList.remove('disable');
+              if (!AppBody.classList.contains('disable')) AppBody.classList.add('disable');
+              if (!AppUser.classList.contains('disable')) AppUser.classList.add('disable');
+              if (!AppWorkingTime.classList.contains('disable'))
+                AppWorkingTime.classList.add('disable');
             }
+          }
             break;
           case 'workingtime':
-            {
-              if (AppWorkingTime.classList.contains('disable')) {
-                AppWorkingTime.classList.remove('disable');
-                if (!AppBody.classList.contains('disable')) AppBody.classList.add('disable');
-                if (!AppUser.classList.contains('disable')) AppUser.classList.add('disable');
-                if (!AppClock.classList.contains('disable')) AppClock.classList.add('disable');
-              }
+          {
+            if (AppWorkingTime.classList.contains('disable')) {
+              AppWorkingTime.classList.remove('disable');
+              if (!AppBody.classList.contains('disable')) AppBody.classList.add('disable');
+              if (!AppUser.classList.contains('disable')) AppUser.classList.add('disable');
+              if (!AppClock.classList.contains('disable')) AppClock.classList.add('disable');
             }
+          }
             break;
         }
       }
@@ -156,8 +157,8 @@ export default {
   border-radius: 50px;
   background: #eeeeee;
   box-shadow:
-    15px 15px 30px #181818,
-    -15px -15px 30px #383838;
+      15px 15px 30px #181818,
+      -15px -15px 30px #383838;
 }
 
 /* Region Burger*/
@@ -174,8 +175,8 @@ export default {
   border-radius: 50px;
   background: #eeeeee;
   box-shadow:
-    15px 15px 30px #181818,
-    -15px -15px 30px #383838;
+      15px 15px 30px #181818,
+      -15px -15px 30px #383838;
 }
 
 .header_container-flex {
@@ -215,8 +216,8 @@ export default {
   border-radius: 50px;
   background: linear-gradient(145deg, #333642, #2b2d38);
   box-shadow:
-    6px 6px 6px #a7a7a7,
-    -6px -6px 6px #ffffff;
+      6px 6px 6px #a7a7a7,
+      -6px -6px 6px #ffffff;
 }
 
 .header-button:hover {
@@ -226,8 +227,8 @@ export default {
   border-radius: 50px;
   background: #30323e;
   box-shadow:
-    inset 10px 10px 20px #24262f,
-    inset -10px -10px 20px #3c3f4e;
+      inset 10px 10px 20px #24262f,
+      inset -10px -10px 20px #3c3f4e;
 }
 
 .fake-header-button {
@@ -253,8 +254,8 @@ export default {
   border-radius: 50px;
   background: #30323e;
   box-shadow:
-    inset 14px 14px 25px #1d1e25,
-    inset -14px -14px 25px #434657;
+      inset 14px 14px 25px #1d1e25,
+      inset -14px -14px 25px #434657;
 }
 
 .divider {
@@ -265,8 +266,8 @@ export default {
   border-radius: 5px;
   background: #30323e;
   box-shadow:
-    inset 3px 3px 2px #18191f,
-    inset -3px -3px 2px #484b5d;
+      inset 3px 3px 2px #18191f,
+      inset -3px -3px 2px #484b5d;
 }
 
 .header-button-secondary {
@@ -286,7 +287,7 @@ export default {
   background: linear-gradient(145deg, #c7c7c7, #ececec);
   border: none;
   box-shadow:
-    inset 10px 10px 20px #bcbcbc,
-    inset -10px -10px 20px #fefefe;
+      inset 10px 10px 20px #bcbcbc,
+      inset -10px -10px 20px #fefefe;
 }
 </style>

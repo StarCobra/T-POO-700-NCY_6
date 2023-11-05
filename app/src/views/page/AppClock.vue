@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { postClock, getClocks } from '@/components/ClockManager.js';
+import { postClock, getClocks } from '@/services/ClockManager';
 
 let userID = ref('');
 </script>
@@ -12,11 +12,11 @@ let userID = ref('');
       <form class="body-form-flex-item" action="" method="post">
         <div class="body-row-field">
           <input
-            class="body-row-field-item"
-            type="text"
-            id="input-userID"
-            placeholder="userID"
-            v-model="userID"
+              class="body-row-field-item"
+              type="text"
+              id="input-userID"
+              placeholder="userID"
+              v-model="userID"
           />
         </div>
         <div class="body-row-input">
@@ -32,18 +32,18 @@ let userID = ref('');
       <form class="body-form-flex-item" action="" method="post">
         <div class="body-row-field">
           <input
-            class="body-row-field-item"
-            type="text"
-            id="input-userID"
-            placeholder="userID"
-            v-model="userID"
+              class="body-row-field-item"
+              type="text"
+              id="input-userID"
+              placeholder="userID"
+              v-model="userID"
           />
         </div>
         <div class="body-row-input">
           <button
-            class="body-row-input-item"
-            id="btn-create-clock"
-            @click="postClock(userID, $event)"
+              class="body-row-input-item"
+              id="btn-create-clock"
+              @click="postClock(userID, $event)"
           >
             Submit
           </button>
@@ -76,8 +76,8 @@ let userID = ref('');
   padding: 8px;
 
   box-shadow:
-    16px 16px 32px #1c1c1c,
-    -16px -16px 32px #343434;
+      16px 16px 32px #1c1c1c,
+      -16px -16px 32px #343434;
 }
 
 .body-form-flex-item {
@@ -108,8 +108,8 @@ let userID = ref('');
   border-radius: 50px;
   background: #dddddd;
   box-shadow:
-    inset 2px 2px 8px #bebcbc,
-    inset -2px -2px 8px #fffefe;
+      inset 2px 2px 8px #bebcbc,
+      inset -2px -2px 8px #fffefe;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -134,8 +134,8 @@ let userID = ref('');
   color: #dddddd;
   background: linear-gradient(145deg, #333642, #2b2d38);
   box-shadow:
-    4px 4px 8px #9b9b9b,
-    -4px -4px 8px #ffffff;
+      4px 4px 8px #9b9b9b,
+      -4px -4px 8px #ffffff;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -146,8 +146,8 @@ let userID = ref('');
   color: #dddddd;
   background: #30323e;
   box-shadow:
-    inset 12px 12px 24px #22232b,
-    inset -12px -12px 24px #3e4151;
+      inset 12px 12px 24px #22232b,
+      inset -12px -12px 24px #3e4151;
 }
 
 /*End Input*/

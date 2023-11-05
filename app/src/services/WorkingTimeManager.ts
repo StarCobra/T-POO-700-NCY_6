@@ -4,7 +4,6 @@ import {WorkingTime} from "@/class/WorkingTime";
 export async function getWorkingTimes(user:User,$event?: Event) {
   if ($event != undefined){
     $event.preventDefault();
-
   }
   try {
     const fetchWorkingTime = await fetch(`http://localhost:4000/api/workingtimes/${user.id}`)

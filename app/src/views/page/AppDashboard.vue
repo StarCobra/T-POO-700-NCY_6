@@ -1,10 +1,10 @@
 <script lang="ts">
-import TimeChart from './chart/TimeChart.vue';
-import RetardChart from './chart/RetardChart.vue';
-import MoyenChart from './chart/MoyenChart.vue';
+import TimeChart from "/src/components/chart/TimeChart.vue";
+import RetardChart from "/src/components/chart/RetardChart.vue";
+import MoyenChart from "/src/components/chart/MoyenChart.vue";
 
 export default {
-  name: 'AppBody',
+  name: 'AppDashBoard',
   components: {
     TimeChart,
     RetardChart,
@@ -48,11 +48,11 @@ export default {
   padding: 8px;
 
   box-shadow:
-    16px 16px 32px #1c1c1c,
-    -16px -16px 32px #343434;
+      16px 16px 32px #1c1c1c,
+      -16px -16px 32px #343434;
 }
 
-.body-form-item {
+/*.body-form-item {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -62,8 +62,8 @@ export default {
   padding: 8px;
 
   box-shadow:
-    16px 16px 32px #1c1c1c,
-    -16px -16px 32px #343434;
+      16px 16px 32px #1c1c1c,
+      -16px -16px 32px #343434;
 }
 
 .body-form-flex-item {
@@ -78,7 +78,7 @@ export default {
   padding: 8px;
 }
 
-/*Region Field*/
+!*Region Field*!
 
 .body-row-field {
   display: flex;
@@ -93,17 +93,17 @@ export default {
   border-radius: 50px;
   background: #dddddd;
   box-shadow:
-    inset 2px 2px 8px #bebcbc,
-    inset -2px -2px 8px #fffefe;
+      inset 2px 2px 8px #bebcbc,
+      inset -2px -2px 8px #fffefe;
   font-family: 'Work Sans', sans-serif;
 }
 
 .body-row-field-item:focus {
   outline: none;
 }
-/*End Field*/
+!*End Field*!
 
-/*Region Input*/
+!*Region Input*!
 
 .body-row-input {
   display: flex;
@@ -119,8 +119,8 @@ export default {
   color: #dddddd;
   background: linear-gradient(145deg, #333642, #2b2d38);
   box-shadow:
-    4px 4px 8px #9b9b9b,
-    -4px -4px 8px #ffffff;
+      4px 4px 8px #9b9b9b,
+      -4px -4px 8px #ffffff;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -131,9 +131,9 @@ export default {
   color: #dddddd;
   background: #30323e;
   box-shadow:
-    inset 12px 12px 24px #22232b,
-    inset -12px -12px 24px #3e4151;
-}
+      inset 12px 12px 24px #22232b,
+      inset -12px -12px 24px #3e4151;
+}*/
 
 /*End Input*/
 </style>

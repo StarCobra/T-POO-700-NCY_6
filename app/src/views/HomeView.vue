@@ -1,7 +1,7 @@
 <script>
-import AppHeader from './AppHeader'
-import AppBody from './AppBody'
-import AppFooter from './AppFooter'
+import AppHeader from "@/components/AppHeader.vue";
+import AppBody from "@/views/AppBody.vue";
+import AppFooter from "@/components/AppFooter.vue";
 import { useTimeStore } from '@/stores/TimeChartStore'
 
 export default {
@@ -56,4 +56,3 @@ export default {
   visibility: hidden;
 }
 </style>
-
