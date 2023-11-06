@@ -11,26 +11,26 @@ import {getTimeWorking,getClockOnSameDay} from "@/function/getTimeWorking";
 export const useTimeStore = defineStore({
     id: 'chart',
     state: () => ({
-        chartData: [], // Initialisez cet état avec les données du graphique
+        chartData: [] as UserData[], // Initialisez cet état avec les données du graphique
     }),
     actions: {
         // Créez des actions pour récupérer les données réelles du graphique
         fetchData: async function () {
 
             try {
-               const fetchedUsers:User[] = await getAllUsers() as User[];
+                const fetchedUsers:User[] = await getAllUsers() as User[];
 
-               const usersPromises = fetchedUsers.map(async (fetchedUser:User) => {
-                   const [userClock, userWorkingTime] = await Promise.all([
-                       getClocks(fetchedUser),
-                       getWorkingTimes(fetchedUser),
-                   ]);
+                const usersPromises = fetchedUsers.map(async (fetchedUser:User) => {
+                    const [userClock, userWorkingTime] = await Promise.all([
+                        getClocks(new Clock(undefined, fetchedUser.id)),
+                        getWorkingTimes(fetchedUser),
+                    ]);
 
-                   return new UserData(
-                       fetchedUser,
-                       userClock as Clock[],
-                       userWorkingTime as WorkingTime[],
-                   );
+                    return new UserData(
+                        fetchedUser,
+                        userClock as Clock[],
+                        userWorkingTime as WorkingTime[],
+                    );
                 });
 
                 const userDatas: UserData[] = await Promise.all(usersPromises) as UserData[];
@@ -41,7 +41,7 @@ export const useTimeStore = defineStore({
                 getClockOnSameDay(userDatas[0].clocks);
 
 
-                this.chartData =  userDatas;
+                this.chartData =  userDatas as UserData[];
 
             } catch (error) {
                 console.error('Erreur lors de la récupération des données :', error);

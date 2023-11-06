@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { postClock, getClocks } from '@/services/ClockManager';
+import type {Clock} from "@/class/Clock";
 
-let userID = ref('');
+let clock:Clock;
+
 </script>
 
 <template>
@@ -16,11 +17,11 @@ let userID = ref('');
               type="text"
               id="input-userID"
               placeholder="userID"
-              v-model="userID"
+              v-model="clock.userId"
           />
         </div>
         <div class="body-row-input">
-          <button class="body-row-input-item" id="btn-get-clock" @click="getClocks(userID, $event)">
+          <button class="body-row-input-item" id="btn-get-clock" @click="getClocks(clock, $event)">
             Submit
           </button>
         </div>
@@ -36,14 +37,14 @@ let userID = ref('');
               type="text"
               id="input-userID"
               placeholder="userID"
-              v-model="userID"
+              v-model="clock.userId"
           />
         </div>
         <div class="body-row-input">
           <button
               class="body-row-input-item"
               id="btn-create-clock"
-              @click="postClock(userID, $event)"
+              @click="postClock(clock, $event)"
           >
             Submit
           </button>
