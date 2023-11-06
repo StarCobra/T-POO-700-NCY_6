@@ -4,7 +4,7 @@ use Mix.Config
 # Configure your database
 config :api, Api.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "sa",
   hostname: "database", # Nom du docker de la BDD
   database: "db_time_manager",
   port: "5432",
