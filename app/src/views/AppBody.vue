@@ -1,8 +1,8 @@
 <script lang="ts">
-import AppUser from "@/views/page/AppUser.vue";
-import AppClock from "@/views/page/AppClock.vue";
-import AppWorkingTime from "@/views/page/AppWorkingTime.vue";
-import AppDashboard from "@/views/page/AppDashboard.vue";
+import AppUser from '@/views/page/AppUser.vue';
+import AppClock from '@/views/page/AppClock.vue';
+import AppWorkingTime from '@/views/page/AppWorkingTime.vue';
+import AppDashboard from '@/views/page/AppDashboard.vue';
 
 export default {
   name: 'AppBody',
@@ -12,28 +12,25 @@ export default {
     AppWorkingTime,
     AppDashboard
   }
-}
+};
 </script>
-
 
 <template>
   <div id="AppBody" class="body-container">
-    <AppDashboard/>
+    <AppDashboard />
   </div>
   <div id="AppUser" class="body-container disable">
-    <AppUser/>
+    <AppUser />
   </div>
   <div id="AppClock" class="body-container disable">
-    <AppClock/>
+    <AppClock />
   </div>
   <div id="AppWorkingTime" class="body-container disable">
-    <AppWorkingTime/>
+    <AppWorkingTime />
   </div>
 </template>
 
-
 <style scoped>
-
 .body-container {
   padding: 8px;
   display: flex;
@@ -51,13 +48,13 @@ export default {
   border-radius: 25px;
   padding: 8px;
 
-  box-shadow:  16px 16px 32px #1c1c1c,
-  -16px -16px 32px #343434;
+  box-shadow:
+    16px 16px 32px #1c1c1c,
+    -16px -16px 32px #343434;
 }
 
 .disable {
   visibility: hidden;
   display: none;
 }
-
 </style>

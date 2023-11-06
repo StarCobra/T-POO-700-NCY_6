@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { getAllUsers, getUser, createUser, updateUser, removeUser } from '@/services/UserManager';
-import type {User} from "@/class/User";
+import { User } from '@/class/User';
 
-let user:User;
+let user = new User();
 </script>
 
 <template>
@@ -25,26 +25,22 @@ let user:User;
         <form class="body-form-flex-item" action="" method="post">
           <div class="body-row-field">
             <input
-                class="body-row-field-item"
-                type="text"
-                id="input-username"
-                placeholder="username"
-                v-model="user.username"
+              class="body-row-field-item"
+              type="text"
+              id="input-username"
+              placeholder="username"
+              v-model="user.username"
             />
             <input
-                class="body-row-field-item"
-                type="text"
-                id="input-email"
-                placeholder="email"
-                v-model="user.email"
+              class="body-row-field-item"
+              type="text"
+              id="input-email"
+              placeholder="email"
+              v-model="user.email"
             />
           </div>
           <div class="body-row-input">
-            <button
-                class="body-row-input-item"
-                id="btn-get-user"
-                @click="getUser(user, $event)"
-            >
+            <button class="body-row-input-item" id="btn-get-user" @click="getUser(user, $event)">
               Submit
             </button>
           </div>
@@ -56,25 +52,25 @@ let user:User;
         <form class="body-form-flex-item" action="" method="post">
           <div class="body-row-field">
             <input
-                class="body-row-field-item"
-                type="text"
-                id="input-username"
-                placeholder="username"
-                v-model="user.username"
+              class="body-row-field-item"
+              type="text"
+              id="input-username"
+              placeholder="username"
+              v-model="user.username"
             />
             <input
-                class="body-row-field-item"
-                type="text"
-                id="input-email"
-                placeholder="email"
-                v-model="user.email"
+              class="body-row-field-item"
+              type="text"
+              id="input-email"
+              placeholder="email"
+              v-model="user.email"
             />
           </div>
           <div class="body-row-input">
             <button
-                class="body-row-input-item"
-                id="btn-create-user"
-                @click="createUser(user, $event)"
+              class="body-row-input-item"
+              id="btn-create-user"
+              @click="createUser(user, $event)"
             >
               Submit
             </button>
@@ -87,32 +83,32 @@ let user:User;
         <form class="body-form-flex-item" action="" method="post">
           <div class="body-row-field">
             <input
-                class="body-row-field-item"
-                type="text"
-                id="input-userID"
-                placeholder="userID"
-                v-model="user.id"
+              class="body-row-field-item"
+              type="text"
+              id="input-userID"
+              placeholder="userID"
+              v-model="user.id"
             />
             <input
-                class="body-row-field-item"
-                type="text"
-                id="input-username"
-                placeholder="username"
-                v-model="user.username"
+              class="body-row-field-item"
+              type="text"
+              id="input-username"
+              placeholder="username"
+              v-model="user.username"
             />
             <input
-                class="body-row-field-item"
-                type="text"
-                id="input-email"
-                placeholder="email"
-                v-model="user.email"
+              class="body-row-field-item"
+              type="text"
+              id="input-email"
+              placeholder="email"
+              v-model="user.email"
             />
           </div>
           <div class="body-row-input">
             <button
-                class="body-row-input-item"
-                id="btn-update-user"
-                @click="updateUser(user, $event)"
+              class="body-row-input-item"
+              id="btn-update-user"
+              @click="updateUser(user, $event)"
             >
               Submit
             </button>
@@ -125,18 +121,18 @@ let user:User;
         <form class="body-form-flex-item" action="" method="post">
           <div class="body-row-field">
             <input
-                class="body-row-field-item"
-                type="text"
-                id="input-userID"
-                placeholder="userID"
-                v-model="user.id"
+              class="body-row-field-item"
+              type="text"
+              id="input-userID"
+              placeholder="userID"
+              v-model="user.id"
             />
           </div>
           <div class="body-row-input">
             <button
-                class="body-row-input-item"
-                id="btn-delete-user"
-                @click="removeUser(user, $event)"
+              class="body-row-input-item"
+              id="btn-delete-user"
+              @click="removeUser(user, $event)"
             >
               Submit
             </button>
@@ -170,8 +166,8 @@ let user:User;
   padding: 8px;
 
   box-shadow:
-      16px 16px 32px #1c1c1c,
-      -16px -16px 32px #343434;
+    16px 16px 32px #1c1c1c,
+    -16px -16px 32px #343434;
 }
 
 .body-form-flex-item {
@@ -202,8 +198,8 @@ let user:User;
   border-radius: 50px;
   background: #dddddd;
   box-shadow:
-      inset 2px 2px 8px #bebcbc,
-      inset -2px -2px 8px #fffefe;
+    inset 2px 2px 8px #bebcbc,
+    inset -2px -2px 8px #fffefe;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -228,8 +224,8 @@ let user:User;
   color: #dddddd;
   background: linear-gradient(145deg, #333642, #2b2d38);
   box-shadow:
-      4px 4px 8px #9b9b9b,
-      -4px -4px 8px #ffffff;
+    4px 4px 8px #9b9b9b,
+    -4px -4px 8px #ffffff;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -240,8 +236,8 @@ let user:User;
   color: #dddddd;
   background: #30323e;
   box-shadow:
-      inset 12px 12px 24px #22232b,
-      inset -12px -12px 24px #3e4151;
+    inset 12px 12px 24px #22232b,
+    inset -12px -12px 24px #3e4151;
 }
 
 /*End Input*/

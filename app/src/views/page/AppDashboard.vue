@@ -1,7 +1,7 @@
 <script lang="ts">
-import TimeChart from "@/components/chart/TimeChart.vue"
-import RetardChart from "@/components/chart/RetardChart.vue";
-import MoyenChart from "@/components/chart/MoyenChart.vue";
+import TimeChart from '@/components/chart/TimeChart.vue';
+import RetardChart from '@/components/chart/RetardChart.vue';
+import MoyenChart from '@/components/chart/MoyenChart.vue';
 
 export default {
   name: 'AppDashBoard',
@@ -48,8 +48,8 @@ export default {
   padding: 8px;
 
   box-shadow:
-      16px 16px 32px #1c1c1c,
-      -16px -16px 32px #343434;
+    16px 16px 32px #1c1c1c,
+    -16px -16px 32px #343434;
 }
 
 /*.body-form-item {

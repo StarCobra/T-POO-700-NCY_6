@@ -8,14 +8,14 @@ export default {
     const timeData = computed(() => timeStore.chartData);
 
     const fetchTimeData = () => {
-       timeStore.fetchData(); // Appeler l'action pour récupérer les données
+      timeStore.fetchData(); // Appeler l'action pour récupérer les données
     };
 
     return {
       timeData,
-      fetchTimeData,
+      fetchTimeData
     };
-  },
+  }
 };
 </script>
 
@@ -26,6 +26,4 @@ export default {
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
