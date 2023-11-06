@@ -1,7 +1,7 @@
 <script lang="ts">
-import TimeChart from "/src/components/chart/TimeChart.vue";
-import RetardChart from "/src/components/chart/RetardChart.vue";
-import MoyenChart from "/src/components/chart/MoyenChart.vue";
+import TimeChart from "@/components/chart/TimeChart.vue"
+import RetardChart from "@/components/chart/RetardChart.vue";
+import MoyenChart from "@/components/chart/MoyenChart.vue";
 
 export default {
   name: 'AppDashBoard',

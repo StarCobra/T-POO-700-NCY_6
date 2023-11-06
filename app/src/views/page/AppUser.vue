@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { getAllUsers, getUser, createUser, updateUser, removeUser } from '@/services/UserManager';
+import type {User} from "@/class/User";
 
-let userID = ref('');
-let username = ref('');
-let email = ref('');
+let user:User;
 </script>
 
 <template>
@@ -31,21 +29,21 @@ let email = ref('');
                 type="text"
                 id="input-username"
                 placeholder="username"
-                v-model="username"
+                v-model="user.username"
             />
             <input
                 class="body-row-field-item"
                 type="text"
                 id="input-email"
                 placeholder="email"
-                v-model="email"
+                v-model="user.email"
             />
           </div>
           <div class="body-row-input">
             <button
                 class="body-row-input-item"
                 id="btn-get-user"
-                @click="getUser(username, email, $event)"
+                @click="getUser(user, $event)"
             >
               Submit
             </button>
@@ -62,21 +60,21 @@ let email = ref('');
                 type="text"
                 id="input-username"
                 placeholder="username"
-                v-model="username"
+                v-model="user.username"
             />
             <input
                 class="body-row-field-item"
                 type="text"
                 id="input-email"
                 placeholder="email"
-                v-model="email"
+                v-model="user.email"
             />
           </div>
           <div class="body-row-input">
             <button
                 class="body-row-input-item"
                 id="btn-create-user"
-                @click="createUser(username, email, $event)"
+                @click="createUser(user, $event)"
             >
               Submit
             </button>
@@ -93,28 +91,28 @@ let email = ref('');
                 type="text"
                 id="input-userID"
                 placeholder="userID"
-                v-model="userID"
+                v-model="user.id"
             />
             <input
                 class="body-row-field-item"
                 type="text"
                 id="input-username"
                 placeholder="username"
-                v-model="username"
+                v-model="user.username"
             />
             <input
                 class="body-row-field-item"
                 type="text"
                 id="input-email"
                 placeholder="email"
-                v-model="email"
+                v-model="user.email"
             />
           </div>
           <div class="body-row-input">
             <button
                 class="body-row-input-item"
                 id="btn-update-user"
-                @click="updateUser(userID, username, email, $event)"
+                @click="updateUser(user, $event)"
             >
               Submit
             </button>
@@ -131,14 +129,14 @@ let email = ref('');
                 type="text"
                 id="input-userID"
                 placeholder="userID"
-                v-model="userID"
+                v-model="user.id"
             />
           </div>
           <div class="body-row-input">
             <button
                 class="body-row-input-item"
                 id="btn-delete-user"
-                @click="removeUser(userID, $event)"
+                @click="removeUser(user, $event)"
             >
               Submit
             </button>
