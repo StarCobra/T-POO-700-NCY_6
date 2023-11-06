@@ -11,3 +11,16 @@ export class Clock {
     this.time = time ?? '';
   }
 }
+
+export class ClockPack {
+  start: string;
+  end: string;
+  day: number;
+  night: number;
+  constructor(start: string, end: string,day: number, night: number) {
+    this.start = start;
+    this.end = end;
+    this.day = day;
+    this.night = night;
+  }
+}

@@ -11,7 +11,7 @@ import { User } from '@/class/User';
 import { Clock } from '@/class/Clock';
 import { WorkingTime } from '@/class/WorkingTime';
 import { UserData } from '@/class/UserData';
-import { getTimeWorking, getClockOnSameDay } from '@/function/getTimeWorking';
+import { getTimeWorking, getClockOnSameDay, setClockPacks } from '@/function/getTimeWorking';
 
 export const useTimeStore = defineStore({
   id: 'chart',
@@ -39,6 +39,7 @@ export const useTimeStore = defineStore({
 
         console.log(getTimeWorking(userDatas[0].clocks[0].time, userDatas[0].clocks[1].time));
         getClockOnSameDay(userDatas[0].clocks);
+        setClockPacks(userDatas[0].clocks);
 
         this.chartData = userDatas as UserData[];
       } catch (error) {
