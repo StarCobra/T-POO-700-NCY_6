@@ -8,6 +8,12 @@
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/.elixir_ls" />
+      <excludeFolder url="file://$MODULE_DIR$/assets/node_modules/phoenix" />
+      <excludeFolder url="file://$MODULE_DIR$/assets/node_modules/phoenix_html" />
+      <excludeFolder url="file://$MODULE_DIR$/cover" />
+      <excludeFolder url="file://$MODULE_DIR$/deps" />
+      <excludeFolder url="file://$MODULE_DIR$/doc" />
+      <excludeFolder url="file://$MODULE_DIR$/logs" />
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/cors_plug" />
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/cowboy" />
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/cowboy_telemetry" />
@@ -34,38 +40,6 @@
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/telemetry" />
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/telemetry_metrics" />
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/telemetry_poller" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/cors_plug" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/cowboy" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/cowboy_telemetry" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/cowlib" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/db_connection" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/decimal" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/ecto" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/ecto_sql" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/expo" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/gettext" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/jason" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/mime" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/phoenix" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/phoenix_ecto" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/phoenix_html" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/phoenix_live_dashboard" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/phoenix_live_view" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/phoenix_pubsub" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/plug" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/plug_cowboy" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/plug_crypto" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/postgrex" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/ranch" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/telemetry" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/telemetry_metrics" />
-      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/telemetry_poller" />
-      <excludeFolder url="file://$MODULE_DIR$/assets/node_modules/phoenix" />
-      <excludeFolder url="file://$MODULE_DIR$/assets/node_modules/phoenix_html" />
-      <excludeFolder url="file://$MODULE_DIR$/cover" />
-      <excludeFolder url="file://$MODULE_DIR$/deps" />
-      <excludeFolder url="file://$MODULE_DIR$/doc" />
-      <excludeFolder url="file://$MODULE_DIR$/logs" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="phoenix" level="project" />
@@ -80,12 +54,11 @@
     <orderEntry type="library" name="plug_cowboy" level="project" />
     <orderEntry type="library" name="cors_plug" level="project" />
     <orderEntry type="library" name="plug" level="project" />
-    <orderEntry type="library" name="ex_doc" level="project" />
-    <orderEntry type="library" name="mix_test_watch" level="project" />
     <orderEntry type="library" name="plug_crypto" level="project" />
     <orderEntry type="library" name="telemetry" level="project" />
     <orderEntry type="library" name="phoenix_pubsub" level="project" />
     <orderEntry type="library" name="phoenix_html" level="project" />
+    <orderEntry type="library" name="ex_doc" level="project" />
     <orderEntry type="library" name="inch_ex" level="project" />
     <orderEntry type="library" name="websocket_client" level="project" />
     <orderEntry type="library" name="ecto" level="project" />
@@ -109,6 +82,7 @@
     <orderEntry type="library" name="hackney" level="project" />
     <orderEntry type="library" name="kadabra" level="project" />
     <orderEntry type="library" name="x509" level="project" />
+    <orderEntry type="library" name="mix_test_watch" level="project" />
     <orderEntry type="library" name="mime" level="project" />
     <orderEntry type="library" name="html_entities" level="project" />
     <orderEntry type="library" name="ssl_verify_fun" level="project" />

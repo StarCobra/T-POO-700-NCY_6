@@ -1,12 +1,11 @@
 import {Clock} from "@/class/Clock";
-import {User} from "@/class/User";
 
-export async function getClocks(user:User, $event?: Event) {
+export async function getClocks(clock:Clock, $event?: Event) {
   if ($event !== undefined) {
     $event.preventDefault();
   }
   try {
-    const fetchClocks = await fetch(`http://localhost:4000/api/clocks/${user.id}`)
+    const fetchClocks = await fetch(`http://localhost:4000/api/clocks/${clock.userId}`)
         .then(response => response.json())
         .then(data => data.data);
 

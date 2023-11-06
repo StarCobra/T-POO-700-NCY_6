@@ -5,13 +5,9 @@ import {
   updateWorkingTime,
   removeWorkingTime
 } from '@/services/WorkingTimeManager';
+import type {WorkingTime} from "@/class/WorkingTime";
 
-let userID = ref('');
-let workingtimeID = ref('');
-let startDateTimeDate = ref('');
-let startDateTimeTime = ref('');
-let endDateTimeDate = ref('');
-let endDateTimeTime = ref('');
+let workingTime:WorkingTime;
 </script>
 
 <template>
@@ -25,42 +21,42 @@ let endDateTimeTime = ref('');
             type="text"
             id="input-userID"
             placeholder="userID"
-            v-model="userID"
+            v-model="workingTime.userId"
           />
           <input
             class="body-row-field-item"
             type="text"
             id="input-workingtimeID"
             placeholder="workingtimeID"
-            v-model="workingtimeID"
+            v-model="workingTime.id"
           />
           <input
             class="body-row-field-item"
             type="date"
             id="input-startDateTime-date"
             placeholder="startDateTime"
-            v-model="startDateTimeDate"
+            v-model="workingTime.start"
           />
           <input
             class="body-row-field-item"
             type="time"
             id="input-startDateTime-time"
             placeholder="endDateTime"
-            v-model="startDateTimeTime"
+            v-model="workingTime.start"
           />
           <input
             class="body-row-field-item"
             type="date"
             id="input-endDateTime-date"
             placeholder="startDateTime"
-            v-model="endDateTimeDate"
+            v-model="workingTime.end"
           />
           <input
             class="body-row-field-item"
             type="time"
             id="input-endDateTime-time"
             placeholder="endDateTime"
-            v-model="endDateTimeTime"
+            v-model="workingTime.end"
           />
         </div>
         <div class="body-row-input">
@@ -69,11 +65,7 @@ let endDateTimeTime = ref('');
             id="btn-create-workingtime"
             @click="
               createWorkingTime(
-                userID,
-                startDateTimeDate,
-                startDateTimeTime,
-                endDateTimeDate,
-                endDateTimeTime,
+                workingTime,
                 $event
               )
             "
@@ -93,42 +85,42 @@ let endDateTimeTime = ref('');
             type="text"
             id="input-userID"
             placeholder="userID"
-            v-model="userID"
+            v-model="workingTime.userId"
           />
           <input
             class="body-row-field-item"
             type="text"
             id="input-workingtimeID"
             placeholder="workingtimeID"
-            v-model="workingtimeID"
+            v-model="workingTime.id"
           />
           <input
             class="body-row-field-item"
             type="date"
             id="input-startDateTime-date"
             placeholder="startDateTime"
-            v-model="startDateTimeDate"
+            v-model="workingTime.start"
           />
           <input
             class="body-row-field-item"
             type="time"
             id="input-startDateTime-time"
             placeholder="endDateTime"
-            v-model="startDateTimeTime"
+            v-model="workingTime.start"
           />
           <input
             class="body-row-field-item"
             type="date"
             id="input-endDateTime-date"
             placeholder="startDateTime"
-            v-model="endDateTimeDate"
+            v-model="workingTime.end"
           />
           <input
             class="body-row-field-item"
             type="time"
             id="input-endDateTime-time"
             placeholder="endDateTime"
-            v-model="endDateTimeTime"
+            v-model="workingTime.end"
           />
         </div>
         <div class="body-row-input">
@@ -137,12 +129,7 @@ let endDateTimeTime = ref('');
             id="btn-update-workingtime"
             @click="
               updateWorkingTime(
-                userID,
-                workingtimeID,
-                startDateTimeDate,
-                startDateTimeTime,
-                endDateTimeDate,
-                endDateTimeTime,
+                workingTime,
                 $event
               )
             "
@@ -162,21 +149,21 @@ let endDateTimeTime = ref('');
             type="text"
             id="input-userID"
             placeholder="userID"
-            v-model="userID"
+            v-model="workingTime.userId"
           />
           <input
             class="body-row-field-item"
             type="text"
             id="input-workingtimeID"
             placeholder="workingtimeID"
-            v-model="workingtimeID"
+            v-model="workingTime.id"
           />
         </div>
         <div class="body-row-input">
           <button
             class="body-row-input-item"
             id="btn-delete-workingtime"
-            @click="removeWorkingTime(userID, workingtimeID, $event)"
+            @click="removeWorkingTime(workingTime, $event)"
           >
             Submit
           </button>
