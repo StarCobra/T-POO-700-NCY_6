@@ -7,32 +7,18 @@ import {
   Filler,
   Tooltip,
   Legend
-} from 'chart.js'
-import { Radar } from 'vue-chartjs'
+} from 'chart.js';
+import { Radar } from 'vue-chartjs';
 
-ChartJS.register(
-    RadialLinearScale,
-    PointElement,
-    LineElement,
-    Filler,
-    Tooltip,
-    Legend
-)
+ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
 export default {
   name: 'RadarChart',
-  components: {Radar},
+  components: { Radar },
   data() {
     return {
       chartData: {
-        labels: [
-          'Max delay',
-          'Moy delay',
-          'On Time',
-          'Moy Advance',
-          'Max Advance',
-          'Absence'
-        ],
+        labels: ['Max delay', 'Moy delay', 'On Time', 'Moy Advance', 'Max Advance', 'Absence'],
         datasets: [
           {
             label: 'All time',
@@ -59,20 +45,13 @@ export default {
       chartOptions: {
         responsive: true
       }
-    }
-
+    };
   }
-}
+};
 </script>
 
 <template>
-  <Radar
-      id="my-chart-id"
-      :options="chartOptions"
-      :data="chartData"
-  />
+  <Radar id="my-chart-id" :options="chartOptions" :data="chartData" />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

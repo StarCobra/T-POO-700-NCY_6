@@ -13,6 +13,9 @@ COPY . .
 # Installez les dépendances
 RUN mix deps.get
 
+# Installez les dépendances
+RUN mix ecto.create
+
 # Migration de la base de données
 RUN mix ecto.migrate
 

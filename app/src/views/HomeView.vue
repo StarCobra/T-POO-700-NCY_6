@@ -1,8 +1,8 @@
 <script>
-import AppHeader from "@/components/AppHeader.vue";
-import AppBody from "@/views/AppBody.vue";
-import AppFooter from "@/components/AppFooter.vue";
-import { useTimeStore } from '@/stores/TimeChartStore'
+import AppHeader from '@/components/AppHeader.vue';
+import AppBody from '@/views/AppBody.vue';
+import AppFooter from '@/components/AppFooter.vue';
+import { useTimeStore } from '@/stores/TimeChartStore';
 
 export default {
   name: 'App',
@@ -10,7 +10,7 @@ export default {
     AppHeader,
     AppBody,
     AppFooter
-  },
+  }
   /*async created() {
     const store = useTimeStore()
     try {
@@ -19,26 +19,25 @@ export default {
       console.error(error)
     }
   }*/
-}
+};
 </script>
 
 <template>
   <main class="background">
-    <AppHeader/>
+    <AppHeader />
     <div class="padding">
-      <AppBody/>
+      <AppBody />
     </div>
-    <AppFooter/>
+    <AppFooter />
   </main>
 </template>
 
-
 <style scoped>
-.background{
+.background {
   background: #30323e;
 }
 
-.padding{
+.padding {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

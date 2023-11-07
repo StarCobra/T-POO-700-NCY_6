@@ -15,4 +15,8 @@ defmodule ApiWeb.UserView do
       username: user.username,
       email: user.email}
   end
+
+  def render("error.json", %{message: message}) do
+    %{errors: %{message: message}}
+  end
 end

@@ -27,7 +27,7 @@
 
   background: #30323e;
   box-shadow:
-      inset 35px 35px 70px #22232b,
-      inset -35px -35px 70px #3e4151;
+    inset 35px 35px 70px #22232b,
+    inset -35px -35px 70px #3e4151;
 }
 </style>

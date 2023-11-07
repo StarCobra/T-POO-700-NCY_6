@@ -81,6 +81,14 @@ defmodule Api.Tables do
     |> Repo.update()
   end
 
+  def get_user_by_email(email) do
+    from(u in User,
+      where: u.email == ^email,
+      select: u
+    )
+    |> Repo.one()
+  end
+
   @doc """
   Deletes a user.
 

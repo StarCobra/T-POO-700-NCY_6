@@ -5,9 +5,9 @@ import {
   updateWorkingTime,
   removeWorkingTime
 } from '@/services/WorkingTimeManager';
-import type {WorkingTime} from "@/class/WorkingTime";
+import type { WorkingTime } from '@/class/WorkingTime';
 
-let workingTime:WorkingTime;
+let workingTime: WorkingTime;
 </script>
 
 <template>
@@ -63,12 +63,7 @@ let workingTime:WorkingTime;
           <button
             class="body-row-input-item"
             id="btn-create-workingtime"
-            @click="
-              createWorkingTime(
-                workingTime,
-                $event
-              )
-            "
+            @click="createWorkingTime(workingTime, $event)"
           >
             Submit
           </button>
@@ -127,12 +122,7 @@ let workingTime:WorkingTime;
           <button
             class="body-row-input-item"
             id="btn-update-workingtime"
-            @click="
-              updateWorkingTime(
-                workingTime,
-                $event
-              )
-            "
+            @click="updateWorkingTime(workingTime, $event)"
           >
             Submit
           </button>
