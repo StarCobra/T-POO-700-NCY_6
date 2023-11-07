@@ -27,6 +27,7 @@ defmodule ApiWeb.Router do
     get "/workingtimes/:userid", WorkingtimeController, :show
     get "/workingtimes/:userid/:id", WorkingtimeController, :getone
     post "/workingtimes/:id", WorkingtimeController, :create
+    post "/users/login", UserController, :login
 
     resources "/users", UserController, except: [:new, :edit]
     resources "/clocks", ClockController, except: [:new, :edit]

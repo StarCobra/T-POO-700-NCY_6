@@ -7,15 +7,21 @@ defmodule Api.Tables.User do
   schema "users" do
     field :username, :string
     field :email, :string
+    field :password, :string
+    field :salt, :string
+    field :role, :string, default: "user"
+
 
     timestamps()
   end
 
+  @allowed_roles ~w(admin manager user)
+
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:username, :email])
-    |> validate_required([:username, :email])
+    |> cast(attrs, [:username, :email, :password, :role, :salt])
+    |> validate_required([:username, :email, :password, :role])
     |> unique_constraint(:email)
   end
 end

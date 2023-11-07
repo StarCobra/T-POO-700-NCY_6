@@ -20,13 +20,48 @@ defmodule ApiWeb.UserController do
     render(conn, "show.json", user: user)
   end
 
+  def login(conn, params) do
+    email = params["email"]
+    password = params["password"]
+    user = Tables.get_user_by_email(email)
+
+    # Extract the binary from the {:ok, binary} tuple
+    {_, salt_binary} = Base.decode64(user.salt)
+
+    hashed_password = :crypto.hash(:sha256, password <> salt_binary)
+    hashed_password_base64 = Base.encode64(hashed_password)
+
+    if hashed_password_base64 == user.password do
+      conn
+      |> put_status(:created)
+      |> put_resp_header("location", Routes.user_path(conn, :show, user))
+      |> render("show.json", user: user)
+    else
+      conn
+      |> put_status(:unauthorized)
+      |> render("error.json", message: "Wrong password")
+    end
+
+  end
+
   def create(conn, %{"user" => user_params}) do
+    salt = :crypto.strong_rand_bytes(16)
+    salt_base64 = Base.encode64(salt)
+    password = user_params["password"]
+    hashed_password = :crypto.hash(:sha256, password <> salt)
+    hashed_password_base64 = Base.encode64(hashed_password)
+    user_params = Map.put(user_params, "password", hashed_password_base64)
+    user_params = Map.put(user_params, "salt", salt_base64)
+
+
+
     with {:ok, %User{} = user} <- Tables.create_user(user_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.user_path(conn, :show, user))
       |> render("show.json", user: user)
     end
+
   end
 
   def show(conn, %{"id" => id}) do
