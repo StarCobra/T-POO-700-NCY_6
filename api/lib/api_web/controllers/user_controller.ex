@@ -32,7 +32,16 @@ defmodule ApiWeb.UserController do
     hashed_password_base64 = Base.encode64(hashed_password)
 
     if hashed_password_base64 == user.password do
+
+      #generate token
+      token = :crypto.strong_rand_bytes(16)
+      token_base64 = Base.encode64(token)
+
+
       conn
+      # put in session
+      |> put_session(:token, token_base64)
+      |> put_session(:email, email)
       |> put_status(:created)
       |> put_resp_header("location", Routes.user_path(conn, :show, user))
       |> render("show.json", user: user)
@@ -77,11 +86,31 @@ defmodule ApiWeb.UserController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
-    user = Tables.get_user!(id)
+def delete(conn, %{"id" => id}) do
+  token = get_session(conn, :token)
+  email = get_session(conn, :email)
 
-    with {:ok, %User{}} <- Tables.delete_user(user) do
-      send_resp(conn, :no_content, "")
+  # if token exist
+
+  if token == nil do
+    conn
+    |> put_status(:unauthorized)
+    |> render("error.json", message: "You are not logged in")
+  else
+   checkrole = Tables.get_user_by_email(email)
+    if checkrole.role == "admin" do
+      user = Tables.get_user!(id)
+      {:ok, _} = Tables.delete_user(user)
+      conn
+      |> put_status(:success)
+      #render success message
+      |> render("success.json", message: "User deleted")
+    else
+      conn
+      |> put_status(:unauthorized)
+      |> render("error.json", message: "You are not admin")
     end
   end
+
+end
 end
