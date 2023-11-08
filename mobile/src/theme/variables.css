@@ -1,5 +1,6 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 /** Ionic CSS Variables **/
 :root {
@@ -153,11 +154,11 @@ http://ionicframework.com/docs/theming/ */
    */
 
   .ios body {
-    --ion-background-color: #000000;
+    --ion-background-color: #30323e;
     --ion-background-color-rgb: 0,0,0;
 
-    --ion-text-color: #ffffff;
-    --ion-text-color-rgb: 255,255,255;
+    --ion-text-color: #30323e;
+    --ion-text-color-rgb: 48,50,62;
 
     --ion-color-step-50: #0d0d0d;
     --ion-color-step-100: #1a1a1a;
@@ -197,11 +198,11 @@ http://ionicframework.com/docs/theming/ */
    */
 
   .md body {
-    --ion-background-color: #121212;
+    --ion-background-color: #30323e;
     --ion-background-color-rgb: 18,18,18;
 
-    --ion-text-color: #ffffff;
-    --ion-text-color-rgb: 255,255,255;
+    --ion-text-color: #30323e;
+    --ion-text-color-rgb: 48,50,62;;
 
     --ion-border-color: #222222;
 
@@ -240,3 +241,146 @@ html {
   https://ionicframework.com/docs/layout/dynamic-font-scaling */
   --ion-dynamic-font: var(--ion-default-dynamic-font);
 }
+
+.body-container {
+  padding: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 35px;
+}
+
+.body-form-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background: #dddddd;
+  border-radius: 25px;
+  width: calc(100% - 8px);
+  padding: 8px;
+
+  box-shadow:
+          16px 16px 32px #1c1c1c,
+          -16px -16px 32px #343434;
+}
+
+.body-form-flex-item {
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.body-form-title {
+  align-self: center;
+  font-size: medium;
+  color: #30323e;
+  font-family: 'Work Sans', sans-serif;
+  padding: 8px;
+}
+
+/*Region Field*/
+
+.body-row-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.body-row-field-item {
+  padding: 8px;
+  border: none;
+  border-radius: 50px;
+  color: #30323e;
+  background: #dddddd;
+  box-shadow:
+          inset 2px 2px 8px #bebcbc,
+          inset -2px -2px 8px #fffefe;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.body-row-field-item:focus {
+  outline: none;
+}
+/*End Field*/
+
+/*Region Input*/
+
+.body-row-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 8px;
+}
+
+.body-row-input-item {
+  padding: 8px;
+  border: none;
+  border-radius: 50px;
+  color: #dddddd;
+  background: linear-gradient(145deg, #333642, #2b2d38);
+  box-shadow:
+          4px 4px 8px #9b9b9b,
+          -4px -4px 8px #ffffff;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.body-row-input-item:hover {
+  padding: 8px;
+  border: none;
+  border-radius: 50px;
+  color: #dddddd;
+  background: #30323e;
+  box-shadow:
+          inset 12px 12px 24px #22232b,
+          inset -12px -12px 24px #3e4151;
+}
+
+/*End Input*/
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.timer-item{
+  color: #dddddd;
+}
+
+.button-timer-item{
+  color: #dddddd;
+}
+
+.header-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 8px;
+  height: 50px;
+  width: calc(100% - 16px);
+
+  border-radius: 24px;
+  background: #dddddd;
+
+  box-shadow:  5px 5px 10px #292b35,
+  -5px -5px 10px #373a47;
+}
+
+.header-title{
+  color: #2a2a2a;
+  font-family: 'Work Sans', sans-serif;
+  font-size: larger;
+}
+
+
+
