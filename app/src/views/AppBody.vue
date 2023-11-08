@@ -3,6 +3,7 @@ import AppUser from '@/views/page/AppUser.vue';
 import AppClock from '@/views/page/AppClock.vue';
 import AppWorkingTime from '@/views/page/AppWorkingTime.vue';
 import AppDashboard from '@/views/page/AppDashboard.vue';
+import { useRouter } from 'vue-router';
 
 export default {
   name: 'AppBody',
@@ -12,7 +13,16 @@ export default {
     AppWorkingTime,
     AppDashboard
   }
+
 };
+
+//if user is not logged in, redirect to login page
+const router = useRouter();
+const username = localStorage.getItem('username');
+if (username === null) {
+  window.location.href = '/login';
+}
+
 </script>
 
 <template>

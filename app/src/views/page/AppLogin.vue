@@ -12,7 +12,6 @@ const submitForm = async (e: any) => {
     email: email.value,
     password: password.value
   }
-  //api post call
   try {
     const response = await fetch('http://localhost:4000/api/users/login', {
       method: 'POST',
@@ -35,8 +34,6 @@ const submitForm = async (e: any) => {
   } catch (error) {
     alert("Wrong email or password");
   }
-
-  //router.push('/');
 }
 
 </script>
