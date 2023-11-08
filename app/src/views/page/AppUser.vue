@@ -9,7 +9,7 @@ let user = new User();
   <div class="flex">
     <div class="body-container">
       <div class="body-form-item">
-        <H2 class="body-form-title">GetAllUsers</H2>
+        <h2 class="body-form-title">GetAllUsers</h2>
         <form class="body-form-flex-item" action="" method="post">
           <div class="body-row-field"></div>
           <div class="body-row-input">
@@ -21,7 +21,7 @@ let user = new User();
       </div>
 
       <div class="body-form-item">
-        <H2 class="body-form-title">GetUser</H2>
+        <h2 class="body-form-title">GetUser</h2>
         <form class="body-form-flex-item" action="" method="post">
           <div class="body-row-field">
             <input
@@ -48,7 +48,7 @@ let user = new User();
       </div>
 
       <div class="body-form-item">
-        <H2 class="body-form-title">AddUser</H2>
+        <h2 class="body-form-title">AddUser</h2>
         <form class="body-form-flex-item" action="" method="post">
           <div class="body-row-field">
             <input
@@ -79,7 +79,7 @@ let user = new User();
       </div>
 
       <div class="body-form-item">
-        <H2 class="body-form-title">SetUser</H2>
+        <h2 class="body-form-title">SetUser</h2>
         <form class="body-form-flex-item" action="" method="post">
           <div class="body-row-field">
             <input
@@ -117,7 +117,7 @@ let user = new User();
       </div>
 
       <div class="body-form-item">
-        <H2 class="body-form-title">DeleteUser</H2>
+        <h2 class="body-form-title">DeleteUser</h2>
         <form class="body-form-flex-item" action="" method="post">
           <div class="body-row-field">
             <input

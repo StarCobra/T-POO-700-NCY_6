@@ -13,7 +13,7 @@ let workingTime = new WorkingTime();
 <template>
   <div class="body-container">
     <div class="body-form-item">
-      <H2 class="body-form-title">AddWorkingTime</H2>
+      <h2 class="body-form-title">AddWorkingTime</h2>
       <form class="body-form-flex-item" action="" method="post">
         <div class="body-row-field">
           <input
@@ -72,7 +72,7 @@ let workingTime = new WorkingTime();
     </div>
 
     <div class="body-form-item">
-      <H2 class="body-form-title">SetWorkingTime</H2>
+      <h2 class="body-form-title">SetWorkingTime</h2>
       <form class="body-form-flex-item" action="" method="post">
         <div class="body-row-field">
           <input
@@ -131,7 +131,7 @@ let workingTime = new WorkingTime();
     </div>
 
     <div class="body-form-item">
-      <H2 class="body-form-title">RemoveWorkingTime</H2>
+      <h2 class="body-form-title">RemoveWorkingTime</h2>
       <form class="body-form-flex-item" action="" method="post">
         <div class="body-row-field">
           <input

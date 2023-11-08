@@ -103,7 +103,7 @@ export default {
           </button>
         </div>
         <!--NameApp-->
-        <div class="app-name">NameApp</div>
+        <div class="app-name">Time Manager</div>
         <!--Button Right-->
         <div class="header-container-item">
           <button id="menu-icon" class="header-button" @click="burgerSwap">

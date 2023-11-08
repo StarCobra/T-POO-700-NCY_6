@@ -8,7 +8,7 @@ let clock = new Clock();
 <template>
   <div class="body-container">
     <div class="body-form-item">
-      <H2 class="body-form-title">GetClock</H2>
+      <h2 class="body-form-title">GetClock</h2>
       <form class="body-form-flex-item" action="" method="post">
         <div class="body-row-field">
           <input
@@ -28,7 +28,7 @@ let clock = new Clock();
     </div>
 
     <div class="body-form-item">
-      <H2 class="body-form-title">Beta addClock</H2>
+      <h2 class="body-form-title">Beta addClock</h2>
       <form class="body-form-flex-item" action="" method="post">
         <div class="body-row-field">
           <input
