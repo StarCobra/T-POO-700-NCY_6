@@ -10,6 +10,7 @@ defmodule Api.Tables.User do
     field :password, :string
     field :salt, :string
     field :role, :string, default: "user"
+    field :token, :string
 
 
     timestamps()
@@ -20,7 +21,7 @@ defmodule Api.Tables.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:username, :email, :password, :role, :salt])
+    |> cast(attrs, [:username, :email, :password, :role, :salt, :token])
     |> validate_required([:username, :email, :password, :role])
     |> unique_constraint(:email)
   end

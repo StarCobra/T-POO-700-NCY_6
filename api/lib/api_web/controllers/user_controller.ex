@@ -44,7 +44,7 @@ defmodule ApiWeb.UserController do
       |> put_session(:email, email)
       |> put_status(:created)
       |> put_resp_header("location", Routes.user_path(conn, :show, user))
-      |> render("show.json", user: user)
+      |> render("usertoken.json", user: user, token: token_base64)
     else
       conn
       |> put_status(:unauthorized)
@@ -90,9 +90,11 @@ def delete(conn, %{"id" => id}) do
   token = get_session(conn, :token)
   email = get_session(conn, :email)
 
+  authorization = get_req_header(conn, "authorization")
+
   # if token exist
 
-  if token == nil do
+  if token != authorization do
     conn
     |> put_status(:unauthorized)
     |> render("error.json", message: "You are not logged in")
