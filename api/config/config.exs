@@ -19,6 +19,11 @@ config :api, ApiWeb.Endpoint,
   pubsub_server: Api.PubSub,
   live_view: [signing_salt: "2xMAcTFv"]
 
+config :api, ApiWeb.Guardian,
+  issuer: "ApiWeb",
+  secret_key: "tnEJpBp2QnE17WVJjHx662mZpLqROrXMt4mZb57FT1ZdwVUWpP4tUDI8GnAqGxtM"
+
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

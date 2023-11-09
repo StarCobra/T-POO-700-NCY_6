@@ -9,8 +9,6 @@ defmodule Api.Repo.Migrations.CreateUsers do
       add :password, :string
       add :salt, :string
       add :role, :string, default: "user"
-      add :token, :string
-
 
       timestamps()
     end

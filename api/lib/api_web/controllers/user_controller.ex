@@ -21,6 +21,7 @@ defmodule ApiWeb.UserController do
   end
 
   def login(conn, params) do
+
     email = params["email"]
     password = params["password"]
     user = Tables.get_user_by_email(email)
@@ -33,24 +34,21 @@ defmodule ApiWeb.UserController do
 
     if hashed_password_base64 == user.password do
 
-      #generate token
-      token = :crypto.strong_rand_bytes(16)
-      token_base64 = Base.encode64(token)
+      # Connexion réussie, génère le token
+      token = ApiWeb.Auth.generate_token(user)
 
 
+
+      # Enregistre le token dans la session ou renvoie-le dans la réponse
       conn
-      # put in session
-      |> put_session(:token, token_base64)
-      |> put_session(:email, email)
-      |> put_status(:created)
-      |> put_resp_header("location", Routes.user_path(conn, :show, user))
-      |> render("usertoken.json", user: user, token: token_base64)
+      |> put_session(:token, token)
+      |> render("usertoken.json", user: user, token: token)
     else
+      # Échec de la connexion, renvoie une erreur
       conn
-      |> put_status(:unauthorized)
       |> render("error.json", message: "Wrong password")
-    end
 
+    end
   end
 
   def create(conn, %{"user" => user_params}) do
