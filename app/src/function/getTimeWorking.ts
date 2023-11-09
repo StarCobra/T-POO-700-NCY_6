@@ -46,7 +46,7 @@ export function getClocksDayNight(firstClock: string, secondClock: string) {
 
 
 export function setClockPacks(clocks: Clock[]) {
-  let res = [] as ClockPack;
+  let res = [] // as clockPack[];
   const length = clocks.length - (clocks.length % 2);
 
   for (let i = 0; i < length; i += 2) {
