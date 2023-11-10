@@ -32,4 +32,9 @@ defmodule ApiWeb.UserView do
   def render("success.json", %{message: message}) do
     %{data: %{message: message}}
   end
+
+  def render("user_deleted.json", %{message: message}) do
+    %{data: %{message: message}}
+
+  end
 end
