@@ -25,6 +25,7 @@ const submitForm = async (e: any) => {
     console.log('Success:', JSON.stringify(json));
     console.log(json.data.email)
     if (json.data.email !== undefined) {
+      localStorage.setItem('userId',json.data.userId)
       localStorage.setItem('username', json.data.username);
       localStorage.setItem('email', json.data.email);
       localStorage.setItem('role', json.data.role);

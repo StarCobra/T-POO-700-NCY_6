@@ -30,15 +30,6 @@ let clock = new Clock();
     <div class="body-form-item">
       <h2 class="body-form-title">Beta addClock</h2>
       <form class="body-form-flex-item" action="" method="post">
-        <div class="body-row-field">
-          <input
-            class="body-row-field-item"
-            type="text"
-            id="input-userID"
-            placeholder="userID"
-            v-model="clock.userId"
-          />
-        </div>
         <div class="body-row-input">
           <button
             class="body-row-input-item"
