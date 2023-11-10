@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
+import {createUser, getAllUsers, getUser, removeUser, updateUser} from "@/services/UserManager";
 
 const router = useRouter();
 
@@ -38,43 +39,130 @@ const submitForm = async (e: any) => {
 
 </script>
 
-<template>
-  <div>
-    <h1>Login</h1>
-    <div>
-      <form method="post" id="form-login">
-      <input id="input-email" class="input-form-login" type="text" placeholder="Email" />
-      <input id="input-password" type="password" class="input-form-login" placeholder="Password" />
-      <button type="submit" class="btn-form-login" @click="submitForm">Login</button>
-      </form>
+<template >
+  <div class="flex">
+    <div class="body-container">
+      <div class="body-form-item">
+        <h2 class="body-form-title">Login</h2>
+        <form class="body-form-flex-item" action="" method="post">
+          <div class="body-row-field">
+            <input id="input-email" class="body-row-field-item" type="text" placeholder="Email" />
+            <input id="input-password" type="password" class="body-row-field-item" placeholder="Password" />
+          </div>
+          <div class="body-row-input">
+            <button type="submit" class="body-row-input-item" @click="submitForm">Login</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-
 </template>
 
 <style scoped>
-  .input-form-login {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  .btn-form-login {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #ccc;
-    color: #fff;
-    cursor: pointer;
-  }
-  #form-login{
-    width: 300px;
-    margin: 0 auto;
-  }
-  h1{
-    text-align: center;
-  }
+.body-container {
+  padding: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 35px;
+}
+
+.body-form-item {
+  min-width: 360px;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background: #eeeeee;
+  border-radius: 25px;
+  padding: 8px;
+
+  box-shadow:
+      16px 16px 32px #1c1c1c,
+      -16px -16px 32px #343434;
+}
+
+.body-form-flex-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.body-form-title {
+  align-self: center;
+  color: #30323e;
+  font-family: 'Work Sans', sans-serif;
+  padding: 8px;
+}
+
+/*Region Field*/
+
+.body-row-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.body-row-field-item {
+  padding: 8px;
+  border: none;
+  border-radius: 50px;
+  background: #dddddd;
+  box-shadow:
+      inset 2px 2px 8px #bebcbc,
+      inset -2px -2px 8px #fffefe;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.body-row-field-item:focus {
+  outline: none;
+}
+/*End Field*/
+
+/*Region Input*/
+
+.body-row-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 8px;
+}
+
+.body-row-input-item {
+  padding: 8px;
+  border: none;
+  border-radius: 50px;
+  color: #dddddd;
+  background: linear-gradient(145deg, #333642, #2b2d38);
+  box-shadow:
+      4px 4px 8px #9b9b9b,
+      -4px -4px 8px #ffffff;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.body-row-input-item:hover {
+  padding: 8px;
+  border: none;
+  border-radius: 50px;
+  color: #dddddd;
+  background: #30323e;
+  box-shadow:
+      inset 12px 12px 24px #22232b,
+      inset -12px -12px 24px #3e4151;
+}
+
+/*End Input*/
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+}
 </style>
