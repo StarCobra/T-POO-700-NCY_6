@@ -22,12 +22,12 @@ const submitForm = async (e: any) => {
     });
     const json = await response.json();
     console.log('Success:', JSON.stringify(json));
-    console.log(json.data.email)
-    if (json.data.email !== undefined) {
-      localStorage.setItem('username', json.data.username);
-      localStorage.setItem('email', json.data.email);
-      localStorage.setItem('role', json.data.role);
-      router.push('/');
+    console.log('email',json.email); // Todo : Yohann edit: `json.data.email` is wrong => good is "json.email"
+    if (json.email !== undefined) {
+      localStorage.setItem('username', json.username);
+      localStorage.setItem('email', json.email);
+      localStorage.setItem('role', json.role);
+      await router.push('/');
     } else {
       alert("Wrong email or password");
     }
