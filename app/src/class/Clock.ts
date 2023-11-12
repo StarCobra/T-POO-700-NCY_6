@@ -17,7 +17,7 @@ export class ClockPack {
   end: string;
   day: number;
   night: number;
-  constructor(start: string, end: string,day: number, night: number) {
+  constructor(start: string, end: string, day: number, night: number) {
     this.start = start;
     this.end = end;
     this.day = day;

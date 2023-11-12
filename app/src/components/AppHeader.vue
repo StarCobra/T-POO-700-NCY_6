@@ -2,7 +2,7 @@
 import HomeIcon from '../assets/SVG/home_white.vue';
 import DashIcon from '../assets/SVG/dashboard_white.vue';
 import MenuIcon from '../assets/SVG/menu_white.vue';
-import ProfileWhite from "../assets/SVG/profile_white.vue";
+import ProfileWhite from '../assets/SVG/profile_white.vue';
 
 export default {
   name: 'App',
@@ -11,7 +11,6 @@ export default {
     DashIcon,
     MenuIcon,
     ProfileWhite
-
   },
   methods: {
     burgerSwap() {
@@ -44,7 +43,13 @@ export default {
       let AppWorkingTime = document.getElementById('AppWorkingTime');
       let AppProfile = document.getElementById('AppProfile');
 
-      if (AppBody != null && AppUser != null && AppClock != null && AppWorkingTime != null && AppProfile != null) {
+      if (
+        AppBody != null &&
+        AppUser != null &&
+        AppClock != null &&
+        AppWorkingTime != null &&
+        AppProfile != null
+      ) {
         switch (index) {
           case 'dashboard':
             {
@@ -89,17 +94,16 @@ export default {
               }
             }
             break;
-          case 'profile':
-            {
-              if (AppProfile.classList.contains('disable')) {
-                AppProfile.classList.remove('disable');
-                if (!AppBody.classList.contains('disable')) AppBody.classList.add('disable');
-                if (!AppUser.classList.contains('disable')) AppUser.classList.add('disable');
-                if (!AppClock.classList.contains('disable')) AppClock.classList.add('disable');
-                if (!AppWorkingTime.classList.contains('disable'))
-                  AppWorkingTime.classList.add('disable');
-              }
+          case 'profile': {
+            if (AppProfile.classList.contains('disable')) {
+              AppProfile.classList.remove('disable');
+              if (!AppBody.classList.contains('disable')) AppBody.classList.add('disable');
+              if (!AppUser.classList.contains('disable')) AppUser.classList.add('disable');
+              if (!AppClock.classList.contains('disable')) AppClock.classList.add('disable');
+              if (!AppWorkingTime.classList.contains('disable'))
+                AppWorkingTime.classList.add('disable');
             }
+          }
         }
       }
     }
@@ -116,24 +120,19 @@ export default {
           <button id="dash-icon" class="header-button" @click="pageSwap('dashboard')">
             <dash-icon />
           </button>
-          <div class="fake-header-button">
-            
-          </div>
+          <div class="fake-header-button"></div>
         </div>
 
         <!--NameApp-->
         <div class="app-name">Time Manager</div>
         <!--Button Right-->
         <div class="header-container-item">
-
           <button id="menu-icon" class="header-button" @click="burgerSwap">
             <menu-icon />
           </button>
           <button id="profile-icon" class="header-button" @click="pageSwap('profile')">
             <profile-white />
           </button>
-
-
         </div>
       </div>
       <div class="divider" />
@@ -149,9 +148,8 @@ export default {
             WorkingTime
           </button>
         </div>
-        
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -261,13 +259,22 @@ export default {
   height: 75px;
   width: 75px;
   background: rgba(0, 255, 255, 0);
+  @media (max-width: 650px) {
+    display: none;
+    visibility: hidden;
+  }
 }
 
 .app-name {
   color: #30323e;
   background-color: #00000000;
+  white-space: nowrap;
   font-family: 'Work Sans', sans-serif;
   font-size: 2.6em;
+  @media (max-width: 650px) {
+    display: none;
+    visibility: hidden;
+  }
 }
 
 .header-open-container-item {

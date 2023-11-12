@@ -18,9 +18,9 @@ export function getClocksDayNight(firstClock: string, secondClock: string) {
   const startMinutes = getMinutesFromMidnight(startDate);
   const endMinutes = getMinutesFromMidnight(endDate);
 
-  const dayStart = getMinutesFromMidnight(new Date("1970-01-01 05:00:00"));
-  const nightStart = getMinutesFromMidnight(new Date("1970-01-01 22:00:00"));
-  const nightEnd = getMinutesFromMidnight(new Date("1970-01-01 05:00:00"));
+  const dayStart = getMinutesFromMidnight(new Date('1970-01-01 05:00:00'));
+  const nightStart = getMinutesFromMidnight(new Date('1970-01-01 22:00:00'));
+  const nightEnd = getMinutesFromMidnight(new Date('1970-01-01 05:00:00'));
 
   let dayDuration = 0;
   let nightDuration = 0;
@@ -35,18 +35,20 @@ export function getClocksDayNight(firstClock: string, secondClock: string) {
     }
   } else {
     dayDuration = Math.max(0, nightStart - startMinutes) + Math.max(0, endMinutes - nightStart);
-    nightDuration = Math.min(endMinutes, nightEnd) + (nightStart - Math.max(startMinutes, nightStart));
+    nightDuration =
+      Math.min(endMinutes, nightEnd) + (nightStart - Math.max(startMinutes, nightStart));
   }
 
   console.log(startDate.getHours());
   console.log(startDate.getMinutes());
-  console.log(`dayDuration: ${dayDuration / 60} hours | nightDuration: ${nightDuration / 60} hours`);
+  console.log(
+    `dayDuration: ${dayDuration / 60} hours | nightDuration: ${nightDuration / 60} hours`
+  );
   return new ClockPack(firstClock, secondClock, dayDuration / 60, nightDuration / 60);
 }
 
-
 export function setClockPacks(clocks: Clock[]) {
-  let res = [] // as clockPack[];
+  let res = []; // as clockPack[];
   const length = clocks.length - (clocks.length % 2);
 
   for (let i = 0; i < length; i += 2) {

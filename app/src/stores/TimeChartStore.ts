@@ -11,7 +11,7 @@ import { User } from '@/class/User';
 import { Clock } from '@/class/Clock';
 import { WorkingTime } from '@/class/WorkingTime';
 import { UserData } from '@/class/UserData';
-import {getClocksDayNight, getTimeWorking, setClockPacks} from '@/function/getTimeWorking';
+import { getClocksDayNight, getTimeWorking, setClockPacks } from '@/function/getTimeWorking';
 
 export const useTimeStore = defineStore({
   id: 'chart',
