@@ -58,7 +58,8 @@ export default {
                 if (!AppUser.classList.contains('disable')) AppUser.classList.add('disable');
                 if (!AppClock.classList.contains('disable')) AppClock.classList.add('disable');
                 if (!AppWorkingTime.classList.contains('disable'))
-                  AppWorkingTime.classList.add('disable');
+                AppWorkingTime.classList.add('disable');
+                if (!AppProfile.classList.contains('disable')) AppProfile.classList.add('disable');
               }
             }
             break;
@@ -69,7 +70,8 @@ export default {
                 if (!AppBody.classList.contains('disable')) AppBody.classList.add('disable');
                 if (!AppClock.classList.contains('disable')) AppClock.classList.add('disable');
                 if (!AppWorkingTime.classList.contains('disable'))
-                  AppWorkingTime.classList.add('disable');
+                AppWorkingTime.classList.add('disable');
+                if (!AppProfile.classList.contains('disable')) AppProfile.classList.add('disable');
               }
             }
             break;
@@ -80,7 +82,8 @@ export default {
                 if (!AppBody.classList.contains('disable')) AppBody.classList.add('disable');
                 if (!AppUser.classList.contains('disable')) AppUser.classList.add('disable');
                 if (!AppWorkingTime.classList.contains('disable'))
-                  AppWorkingTime.classList.add('disable');
+                AppWorkingTime.classList.add('disable');
+                if (!AppProfile.classList.contains('disable')) AppProfile.classList.add('disable');
               }
             }
             break;
@@ -91,6 +94,7 @@ export default {
                 if (!AppBody.classList.contains('disable')) AppBody.classList.add('disable');
                 if (!AppUser.classList.contains('disable')) AppUser.classList.add('disable');
                 if (!AppClock.classList.contains('disable')) AppClock.classList.add('disable');
+                if (!AppProfile.classList.contains('disable')) AppProfile.classList.add('disable');
               }
             }
             break;
