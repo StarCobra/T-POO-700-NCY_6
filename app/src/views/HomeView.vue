@@ -11,14 +11,6 @@ export default {
     AppBody,
     AppFooter
   }
-  /*async created() {
-    const store = useTimeStore()
-    try {
-      await store.getUsers()
-    } catch (error) {
-      console.error(error)
-    }
-  }*/
 };
 </script>
 

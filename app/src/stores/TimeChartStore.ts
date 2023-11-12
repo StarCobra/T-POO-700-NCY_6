@@ -1,46 +1,73 @@
 import { defineStore } from 'pinia';
-import { getAllUsers, getUser, createUser, updateUser, removeUser } from '@/services/UserManager';
-import { getClocks, postClock } from '@/services/ClockManager';
-import {
-  getWorkingTimes,
-  createWorkingTime,
-  updateWorkingTime,
-  removeWorkingTime
-} from '@/services/WorkingTimeManager';
+import { getAllUsers } from '@/services/UserManager';
+import { getClocks } from '@/services/ClockManager';
+import { getWorkingTimes } from '@/services/WorkingTimeManager';
 import { User } from '@/class/User';
 import { Clock } from '@/class/Clock';
 import { WorkingTime } from '@/class/WorkingTime';
 import { UserData } from '@/class/UserData';
-import { getClocksDayNight, getTimeWorking, setClockPacks } from '@/function/getTimeWorking';
+import { setClockPacks } from '@/function/getTimeWorking';
+import dayjs from 'dayjs';
 
 export const useTimeStore = defineStore({
-  id: 'chart',
+  id: 'timeStore',
   state: () => ({
-    chartData: [] as UserData[] // Initialisez cet état avec les données du graphique
+    chartData: null,
+    isLoaded: false
   }),
   actions: {
-    // Créez des actions pour récupérer les données réelles du graphique
     fetchData: async function () {
       try {
         const fetchedUsers: User[] = (await getAllUsers()) as User[];
+        const userDatas: UserData[] = [];
+        const dataToAdd = {
+          dayData: [],
+          nightData: [],
+          labelDay: []
+        };
 
-        const usersPromises = fetchedUsers.map(async (fetchedUser: User) => {
-          const [userClock, userWorkingTime] = await Promise.all([
-            getClocks(new Clock(undefined, fetchedUser.id)),
-            getWorkingTimes(fetchedUser)
-          ]);
+        await Promise.all(
+          fetchedUsers.map(async (fetchedUser: User) => {
+            const [userClock, userWorkingTime] = await Promise.all([
+              getClocks(new Clock(undefined, fetchedUser?.id)),
+              getWorkingTimes(fetchedUser)
+            ]);
 
-          return new UserData(fetchedUser, userClock as Clock[], userWorkingTime as WorkingTime[]);
-        });
+            const userData = new UserData(
+              fetchedUser,
+              userClock as Clock[],
+              userWorkingTime as WorkingTime[]
+            );
+            userDatas.push(userData);
 
-        const userDatas: UserData[] = (await Promise.all(usersPromises)) as UserData[];
+            const pairClocks = setClockPacks(userData?.clocks);
+            pairClocks.forEach((clockPack) => {
+              dataToAdd.dayData.push(clockPack?.day);
+              dataToAdd.nightData.push(clockPack?.night);
+              dataToAdd.labelDay.push(dayjs(clockPack?.start).format('dddd'));
+            });
+          })
+        );
 
-        console.log(userDatas);
+        this.chartData = {
+          labels: dataToAdd?.labelDay,
+          datasets: [
+            {
+              type: 'bar',
+              label: 'Day Hours',
+              backgroundColor: '#f87979',
+              data: dataToAdd?.dayData
+            },
+            {
+              type: 'bar',
+              label: 'Night Hours',
+              backgroundColor: '#0096ff',
+              data: dataToAdd?.nightData
+            }
+          ]
+        };
 
-        console.log(getTimeWorking(userDatas[0]?.clocks[0]?.time, userDatas[0]?.clocks[1]?.time));
-        setClockPacks(userDatas[0]?.clocks);
-
-        this.chartData = userDatas as UserData[];
+        this.isLoaded = true;
       } catch (error) {
         console.error('Erreur lors de la récupération des données :', error);
       }

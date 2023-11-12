@@ -1,18 +1,26 @@
 <script lang="ts">
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'vue-chartjs';
-import { useRetardStore } from '@/stores/RetardChartStore';
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+} from 'chart.js';
+import { Line } from 'vue-chartjs';
+import { useEmployeStore } from '@/stores/EmployeChartStore';
 import { computed, onBeforeMount } from 'vue';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
 export default {
-  name: 'RetardChart',
+  name: 'EmployeChart',
   components: {
-    Doughnut
+    Line
   },
   setup() {
-    const timeStore = useRetardStore();
+    const timeStore = useEmployeStore();
     const options = {
       responsive: true,
       maintainAspectRatio: false
@@ -32,6 +40,6 @@ export default {
 </script>
 
 <template>
-  <Doughnut v-if="isLoaded" id="my-chart-id" :options="options" :data="data" />
+  <Line v-if="isLoaded" id="my-chart-id" :options="options" :data="data" />
   <div v-else>Loading...</div>
 </template>

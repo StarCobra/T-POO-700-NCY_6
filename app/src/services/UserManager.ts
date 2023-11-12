@@ -43,7 +43,6 @@ export async function createUser(user: User, $event?: Event) {
   if ($event != undefined) {
     $event.preventDefault();
   }
-  console.log(`createUser: ${user.username} - ${user.email}`);
   try {
     await fetch('http://localhost:4000/api/users', {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
@@ -51,7 +50,9 @@ export async function createUser(user: User, $event?: Event) {
       body: JSON.stringify({
         user: {
           username: user.username,
-          email: user.email
+          email: user.email,
+          password: user.password,
+          roles: user.roles
         }
       })
     });
