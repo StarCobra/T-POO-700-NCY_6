@@ -28,7 +28,7 @@ export const useRetardStore = defineStore({
       try {
         const fetchedUsers: User[] = (await getAllUsers()) as User[];
         const userDatas: UserData[] = [];
-        let dataToAdd = {
+        const dataToAdd = {
           absent: 0,
           late: 0,
           present: 0,

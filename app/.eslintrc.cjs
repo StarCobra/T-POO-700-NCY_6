@@ -25,6 +25,10 @@ module.exports = {
     'arrow-spacing': ['error', { 'before': true, 'after': true }], // espaces autour des fonctions fléchées
     'no-console': 'error', // pas de console.log
     'max-len': ['error', { 'code': 100 }], // longueur de ligne max
+    "vue/no-reserved-component-names": ["error", {
+      "disallowVueBuiltInComponents": false,
+      "disallowVue3BuiltInComponents": false
+    }]
   },
 };
 

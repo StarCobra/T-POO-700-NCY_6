@@ -24,7 +24,7 @@ export default {
 
     return {
       isLoaded: computed(() => timeStore.isLoaded),
-      data: computed(() => timeStore.chartData || null),
+      data: computed(() => timeStore.chartData || null) as any,
       options
     };
   }

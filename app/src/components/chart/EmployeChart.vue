@@ -6,7 +6,7 @@ import {
   LineElement,
   Filler,
   Tooltip,
-  Legend,
+  Legend
 } from 'chart.js';
 import { Line } from 'vue-chartjs';
 import { useEmployeStore } from '@/stores/EmployeChartStore';
@@ -32,7 +32,7 @@ export default {
 
     return {
       isLoaded: computed(() => timeStore.isLoaded),
-      data: computed(() => timeStore.chartData),
+      data: computed(() => timeStore.chartData) as any,
       options
     };
   }
@@ -45,4 +45,3 @@ export default {
     <div v-else>Loading...</div>
   </div>
 </template>
-

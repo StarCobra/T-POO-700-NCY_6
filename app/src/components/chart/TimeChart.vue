@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { computed, onBeforeMount } from 'vue';
 import { useTimeStore } from '@/stores/TimeChartStore';
 import {
@@ -32,7 +32,7 @@ export default {
 
     return {
       isLoaded: computed(() => timeStore.isLoaded),
-      data: computed(() => timeStore.chartData || null),
+      data: computed(() => timeStore.chartData || null) as any,
       options
     };
   }
