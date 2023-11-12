@@ -36,7 +36,6 @@ export default {
       }
     },
     pageSwap(index: string) {
-      console.log('pageSwap', index);
       let AppBody = document.getElementById('AppBody');
       let AppUser = document.getElementById('AppUser');
       let AppClock = document.getElementById('AppClock');

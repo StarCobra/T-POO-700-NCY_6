@@ -19,7 +19,6 @@ const start = (clock: Clock, event: Event) => {
   if (clock.userId !== null) {
     clock.time = dayjs().format('YYYY-MM-DD HH:mm:ss');
     clock.status = true;
-    console.log('start', clock);
     postClock(clock, event);
   } else {
     alert('Id User is not valide');
@@ -31,7 +30,6 @@ const end = (clock: Clock, event: Event) => {
   if (clock.userId !== null) {
     clock.time = dayjs().format('YYYY-MM-DD HH:mm:ss');
     clock.status = false;
-    console.log('end', clock);
     postClock(clock, event);
   } else {
     alert('Id User is not valide');
