@@ -7,6 +7,7 @@ import { Clock } from '@/class/Clock';
 import { WorkingTime } from '@/class/WorkingTime';
 import { UserData } from '@/class/UserData';
 import { setClockPacks } from '@/function/getTimeWorking';
+import dayjs from "dayjs";
 
 export const useTimeStore = defineStore({
   id: 'timeStore',
@@ -22,6 +23,7 @@ export const useTimeStore = defineStore({
         const dataToAdd = {
           dayData: [],
           nightData: [],
+          labelDay: []
         };
 
         await Promise.all(
@@ -42,12 +44,13 @@ export const useTimeStore = defineStore({
               pairClocks.forEach((clockPack) => {
                 dataToAdd.dayData.push(clockPack?.day);
                 dataToAdd.nightData.push(clockPack?.night);
+                dataToAdd.labelDay.push(dayjs(clockPack?.start).format('dddd'));
               });
             })
         );
 
         this.chartData = {
-          labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          labels: dataToAdd?.labelDay,
           datasets: [
             {
               type: 'bar',

@@ -37,15 +37,15 @@ export const useRetardStore = defineStore({
           if (userData?.workingTime?.length > 0) {
             for (let i = 0, y = 0 ; i < userData?.workingTime?.length; i++, y+=2) {
               const workingTimeStart = new Date(userData?.workingTime?.[i]?.start).getTime();
-              const clockTimeStar = new Date(userData?.clocks?.[y]?.time).getTime();
+              const clockTimeStart = new Date(userData?.clocks?.[y]?.time).getTime();
 
               if (workingTimeStart <= new Date().getTime()) {
-                if (clockTimeStar > workingTimeStart + 5 * 60 * 1000) {
+                if (clockTimeStart > workingTimeStart + 5 * 60 * 1000) {
                   dataToAdd.late++;
-                } else if (clockTimeStar < workingTimeStart - 5 * 60 * 1000) {
+                } else if (clockTimeStart < workingTimeStart - 5 * 60 * 1000) {
                   dataToAdd.early++;
-                } else if (workingTimeStart - 5 * 60 * 1000 <= clockTimeStar
-                    && clockTimeStar <= workingTimeStart + 5 * 60 * 1000
+                } else if (workingTimeStart - 5 * 60 * 1000 <= clockTimeStart
+                    && clockTimeStart <= workingTimeStart + 5 * 60 * 1000
                 ) {
                   dataToAdd.present++;
                 } else {
