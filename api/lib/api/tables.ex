@@ -274,7 +274,7 @@ defmodule Api.Tables do
       where: w.user_id == ^userid and w.start >= ^start and w.end <= ^endd,
       select: w
     )
-    |> Repo.one()
+    |> Repo.all()
   end
 
   @doc """

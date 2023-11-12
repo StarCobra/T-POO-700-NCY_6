@@ -65,6 +65,20 @@ let user = new User();
               placeholder="email"
               v-model="user.email"
             />
+            <input
+                class="body-row-field-item"
+                type="password"
+                id="input-password"
+                placeholder="password"
+                v-model="user.password"
+            />
+            <input
+                class="body-row-field-item"
+                type="text"
+                id="input-role"
+                placeholder="role"
+                v-model="user.roles"
+            />
           </div>
           <div class="body-row-input">
             <button

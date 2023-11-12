@@ -19,9 +19,9 @@ export default {
 //if user is not logged in, redirect to login page
 const router = useRouter();
 const username = localStorage.getItem('username');
-if (username === null) {
-  window.location.href = '/login';
-}
+// if (username === null) {
+//   window.location.href = '/login';
+// }
 
 </script>
 

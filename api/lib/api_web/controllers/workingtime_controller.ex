@@ -38,8 +38,8 @@ defmodule ApiWeb.WorkingtimeController do
   end
 
   def getone_start_end(conn, userid, start, endd) do
-    workingtime = Tables.get_workingtime_by_user_id_and_start_and_end(userid, start, endd)
-    render(conn, "show.json", workingtime: workingtime)
+    workingtimes = Tables.get_workingtime_by_user_id_and_start_and_end(userid, start, endd)
+    render(conn, "index.json", workingtimes: workingtimes)
   end
 
   def update(conn, %{"id" => id, "workingtime" => workingtime_params}) do
