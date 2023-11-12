@@ -8,7 +8,7 @@
 
 <style scoped>
 .footer-container {
-  position: sticky;
+  position: absolute;
   bottom: 0;
   width: 100%;
   padding: 12px 12px;
