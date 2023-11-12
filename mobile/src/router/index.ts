@@ -8,6 +8,11 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/dashboard',
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/AppLogin.vue')
+  },
+  {
     path: '/',
     component: Example,
     children: [
@@ -31,6 +36,10 @@ const routes: Array<RouteRecordRaw> = [
         path: 'clock',
         component: () => import('../views/ClockPage.vue'),
       },
+      {
+        path: 'profile',
+        component: () => import('../views/AppProfile.vue')
+      }
     ],
   },
 ];

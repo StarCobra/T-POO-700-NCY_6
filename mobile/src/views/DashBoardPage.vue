@@ -10,7 +10,7 @@
           <retard-chart />
         </div>
         <div class="body-card-item">
-          <moyen-chart />
+          <employe-chart />
         </div>
       </div>
     </ion-content>
@@ -20,7 +20,7 @@
 <script lang="ts">
 import TimeChart from "@/component/chart/TimeChart.vue";
 import RetardChart from '@/component/chart/RetardChart.vue';
-import MoyenChart from '@/component/chart/MoyenChart.vue';
+import EmployeChart from '@/component/chart/EmployeChart.vue';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage } from '@ionic/vue';
 
 import Header from "@/component/Header.vue";
@@ -28,7 +28,7 @@ import Header from "@/component/Header.vue";
 export default {
   components: {
     IonHeader, IonToolbar, IonTitle, IonContent, IonPage, Header,
-    TimeChart,RetardChart,MoyenChart
+    TimeChart,RetardChart,EmployeChart
   },
 };
 </script>

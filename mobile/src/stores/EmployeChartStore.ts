@@ -1,16 +1,15 @@
 import { defineStore } from 'pinia';
-import { getAllUsers } from '@/services/UserManager';
 import { getClocks } from '@/services/ClockManager';
 import { getWorkingTimes } from '@/services/WorkingTimeManager';
-import { User } from '@/class/User';
-import { Clock } from '@/class/Clock';
-import { WorkingTime } from '@/class/WorkingTime';
 import { UserData } from '@/class/UserData';
-import { setClockPacks } from '@/function/getTimeWorking';
+import { getAllUsers } from '@/services/UserManager';
+import type { User } from '@/class/User';
+import { Clock } from '@/class/Clock';
+import type { WorkingTime } from '@/class/WorkingTime';
 import dayjs from 'dayjs';
 
-export const useTimeStore = defineStore({
-  id: 'timeStore',
+export const useEmployeStore = defineStore({
+  id: 'employeStore',
   state: () => ({
     chartData: null,
     isLoaded: false
@@ -19,12 +18,11 @@ export const useTimeStore = defineStore({
     fetchData: async function () {
       try {
         const fetchedUsers: User[] = (await getAllUsers()) as User[];
-        const userDatas: UserData[] = [];
         const dataToAdd = {
-          dayData: [],
-          nightData: [],
-          labelDay: []
+          nbEmployee: [0, 0, 0, 0, 0, 0]
         };
+
+        const currentDate = dayjs();
 
         await Promise.all(
             fetchedUsers.map(async (fetchedUser: User) => {
@@ -38,31 +36,31 @@ export const useTimeStore = defineStore({
                   userClock as Clock[],
                   userWorkingTime as WorkingTime[]
               );
-              userDatas.push(userData);
 
-              const pairClocks = setClockPacks(userData?.clocks);
-              pairClocks.forEach((clockPack) => {
-                dataToAdd.dayData.push(clockPack?.day);
-                dataToAdd.nightData.push(clockPack?.night);
-                dataToAdd.labelDay.push(dayjs(clockPack?.start).format('dddd'));
+              // Vérification si l'utilisateur a badgé
+              userData?.clocks?.forEach((clock: Clock) => {
+                if (clock?.status === true) {
+                  const clockDate = dayjs(clock?.time);
+                  const daysDifference = currentDate.diff(clockDate, 'days');
+
+                  if (daysDifference >= 0 && daysDifference < 6) {
+                    dataToAdd.nbEmployee[daysDifference] += 1;
+                  }
+                }
               });
             })
         );
 
         this.chartData = {
-          labels: dataToAdd?.labelDay,
+          labels: ['4 days ago', '3 days ago', '2 days ago', 'Yesterday', 'Today', 'Tomorrow'],
           datasets: [
             {
-              type: 'bar',
-              label: 'Day Hours',
-              backgroundColor: '#f87979',
-              data: dataToAdd?.dayData
-            },
-            {
-              type: 'bar',
-              label: 'Night Hours',
-              backgroundColor: '#0096ff',
-              data: dataToAdd?.nightData
+              type: 'line',
+              label: 'Number of employee',
+              backgroundColor: '#10d97c',
+              data: dataToAdd?.nbEmployee,
+              fill: true,
+              tension: 0.4
             }
           ]
         };
