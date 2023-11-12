@@ -6,16 +6,12 @@ import { User } from '@/class/User';
 import { Clock } from '@/class/Clock';
 import { WorkingTime } from '@/class/WorkingTime';
 import { UserData } from '@/class/UserData';
-import dayjs from "dayjs";
 
 export const useRetardStore = defineStore({
   id: 'retardStore',
   state: () => ({
-    datasets: {
-      labels: ["Absent", "Late", "Present", "Early"],
-      data: [],
-      backgroundColors: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-    },
+    chartData: null,
+    isLoaded: false,
   }),
   actions: {
     fetchData: async function () {
@@ -43,7 +39,6 @@ export const useRetardStore = defineStore({
               const workingTimeStart = new Date(userData?.workingTime?.[i]?.start).getTime();
               const clockTimeStar = new Date(userData?.clocks?.[y]?.time).getTime();
 
-              /** Vérification des heures d'arriver **/
               if (workingTimeStart <= new Date().getTime()) {
                 if (clockTimeStar > workingTimeStart + 5 * 60 * 1000) {
                   dataToAdd.late++;
@@ -61,7 +56,18 @@ export const useRetardStore = defineStore({
           }
         }));
 
-        this.datasets.data = [dataToAdd.absent, dataToAdd.late, dataToAdd.present, dataToAdd.early];
+
+        this.chartData = {
+          labels: ["Absent", "Late", "Present", "Early"],
+          datasets: [{
+            label: '',
+            data: [dataToAdd.absent, dataToAdd.late, dataToAdd.present, dataToAdd.early],
+            backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+            hoverOffset: 10
+          }]
+        };
+
+        this.isLoaded = true;
       } catch (error) {
         console.error('Erreur lors de la récupération des données :', error);
       }

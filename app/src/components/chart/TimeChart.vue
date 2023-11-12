@@ -1,5 +1,3 @@
-// TimeChart.vue
-
 <script>
 import { computed, onBeforeMount } from 'vue';
 import { useTimeStore } from '@/stores/TimeChartStore';

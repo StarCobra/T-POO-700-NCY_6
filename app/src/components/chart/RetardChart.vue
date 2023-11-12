@@ -13,31 +13,18 @@ export default {
   },
   setup() {
     const timeStore = useRetardStore();
-    const timeData = computed(() => timeStore.datasets);
-    let isLoaded = false;
-
-    const data = {
-      labels: timeData?.value?.labels,
-      datasets: [
-        {
-          data: timeData?.value?.data,
-          backgroundColor: timeData?.value?.backgroundColors,
-        }
-      ],
-    };
     const options = {
       responsive: true,
       maintainAspectRatio: false
     }
 
     onBeforeMount(async () => {
-      isLoaded = true;
       await timeStore.fetchData();
     });
 
     return {
-      isLoaded,
-      data,
+      isLoaded: computed(() => timeStore.isLoaded),
+      data: computed(() => timeStore.chartData),
       options,
     };
   },
