@@ -17,11 +17,24 @@ defmodule ApiWeb.UserView do
       role: user.role,}
   end
 
+  def render("usertoken.json", %{user: user, token: token}) do
+    %{id: user.id,
+      username: user.username,
+      email: user.email,
+      role: user.role,
+      token: token}
+  end
+
   def render("error.json", %{message: message}) do
     %{errors: %{message: message}}
   end
 
   def render("success.json", %{message: message}) do
     %{data: %{message: message}}
+  end
+
+  def render("user_deleted.json", %{message: message}) do
+    %{data: %{message: message}}
+
   end
 end

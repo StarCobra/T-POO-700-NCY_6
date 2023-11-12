@@ -10,7 +10,6 @@ defmodule Api.Repo.Migrations.CreateUsers do
       add :salt, :string
       add :role, :string, default: "user"
 
-
       timestamps()
     end
 

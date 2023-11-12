@@ -8,8 +8,8 @@
 
 <style scoped>
 .footer-container {
-  position: absolute;
-  bottom: 0px;
+  position: sticky;
+  bottom: 0;
   width: 100%;
   padding: 12px 12px;
   display: flex;

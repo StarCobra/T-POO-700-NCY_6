@@ -20,6 +20,25 @@ defmodule ApiWeb.UserController do
     render(conn, "show.json", user: user)
   end
 
+  def generate_token(user) do
+    header = %{"alg" => "HS256", "typ" => "JWT"}
+    claims = %{"sub" => user.id, "email" => user.email, "role" => user.role}
+
+    secret_key = :crypto.strong_rand_bytes(32)
+    secret_key_base64 = :base64.encode(secret_key)
+
+    header_base64 = :base64.encode(Jason.encode!(header))
+    claims_base64 = :base64.encode(Jason.encode!(claims))
+
+    data = header_base64 <> "." <> claims_base64
+
+    signature = :crypto.mac(:hmac, :sha256, secret_key, data)
+
+    signature_base64 = :base64.encode(signature)
+
+    "#{data}.#{signature_base64}"
+  end
+
   def login(conn, params) do
     email = params["email"]
     password = params["password"]
@@ -34,17 +53,14 @@ defmodule ApiWeb.UserController do
     if hashed_password_base64 == user.password do
 
       #generate token
-      token = :crypto.strong_rand_bytes(16)
-      token_base64 = Base.encode64(token)
-
+      token = generate_token(user)
 
       conn
       # put in session
-      |> put_session(:token, token_base64)
-      |> put_session(:email, email)
+
       |> put_status(:created)
       |> put_resp_header("location", Routes.user_path(conn, :show, user))
-      |> render("show.json", user: user)
+      |> render("usertoken.json", user: user, token: token)
     else
       conn
       |> put_status(:unauthorized)
@@ -52,6 +68,34 @@ defmodule ApiWeb.UserController do
     end
 
   end
+
+  def validate_token(token) do
+    try do
+      token = to_string(token)
+      [header_base64, claims_base64, signature_base64] = String.split(token, ".")
+      header = Jason.decode!(Base.decode64!(header_base64))
+      claims = Jason.decode!(Base.decode64!(claims_base64))
+      signature = Base.decode64!(signature_base64)
+
+      user_id = Map.get(claims, "sub")
+
+      case Tables.get_user_by_id(user_id) do
+        %User{} = user ->
+          # Utilisateur trouvé, tu peux effectuer d'autres vérifications si nécessaire
+          {:ok, user}
+
+        _ ->
+          # Aucun utilisateur trouvé ou erreur, retourne :invalid_token
+          {:error, :invalid_token}
+      end
+    rescue
+      _ ->
+        # Erreur de décodage du token, retourne :invalid_token
+        {:error, :invalid_token}
+    end
+  end
+
+
 
   def create(conn, %{"user" => user_params}) do
     salt = :crypto.strong_rand_bytes(16)
@@ -86,31 +130,34 @@ defmodule ApiWeb.UserController do
     end
   end
 
-def delete(conn, %{"id" => id}) do
-  token = get_session(conn, :token)
-  email = get_session(conn, :email)
+  def delete(conn, %{"id" => id}) do
 
-  # if token exist
+    token = get_req_header(conn, "authorization")
 
-  if token == nil do
-    conn
-    |> put_status(:unauthorized)
-    |> render("error.json", message: "You are not logged in")
-  else
-   checkrole = Tables.get_user_by_email(email)
-    if checkrole.role == "admin" do
-      user = Tables.get_user!(id)
-      {:ok, _} = Tables.delete_user(user)
-      conn
-      |> put_status(:success)
-      #render success message
-      |> render("success.json", message: "User deleted")
-    else
-      conn
-      |> put_status(:unauthorized)
-      |> render("error.json", message: "You are not admin")
+    # Récupère l'utilisateur à partir du token
+    case validate_token(token) do
+      {:ok, user} when user.role == "admin" ->
+        # L'utilisateur a un token valide et le rôle d'administrateur, continue avec la suppression
+
+        # Récupère l'utilisateur à supprimer
+        deleted_user = Tables.get_user!(id)
+
+        Tables.delete_user(deleted_user)
+        conn
+        |> put_status(:ok)
+        |> render("user_deleted.json", message: "User deleted")
+
+      {:ok, _user} ->
+        # L'utilisateur a un token valide, mais n'a pas le rôle d'administrateur
+        conn
+        |> put_status(:forbidden)
+        |> render("error.json", message: "Permission denied")
+
+      {:error, reason} ->
+        # Le token est invalide
+        conn
+        |> put_status(:unauthorized)
+        |> render("error.json", message: reason)
     end
   end
-
-end
 end

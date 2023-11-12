@@ -44,6 +44,8 @@ defmodule Api.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:cors_plug, "~> 3.0"},
+      {:ex_crypto, "~> 0.10.0"},
+      {:poison, "~> 5.0"}
     ]
   end
 

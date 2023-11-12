@@ -45,6 +45,14 @@ defmodule Api.Tables do
   """
   def get_user!(id), do: Repo.get!(User, id)
 
+  def get_user_by_id(id) do
+    from(u in User,
+      where: u.id == ^id,
+      select: u
+    )
+    |> Repo.one()
+  end
+
   @doc """
   Creates a user.
 
@@ -104,6 +112,8 @@ defmodule Api.Tables do
   def delete_user(%User{} = user) do
     Repo.delete(user)
   end
+
+
 
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking user changes.
