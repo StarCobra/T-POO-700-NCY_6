@@ -60,7 +60,7 @@ export const useRetardStore = defineStore({
         this.chartData = {
           labels: ["Absent", "Late", "Present", "Early"],
           datasets: [{
-            label: '',
+            label: 'Number of employees',
             data: [dataToAdd.absent, dataToAdd.late, dataToAdd.present, dataToAdd.early],
             backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
             hoverOffset: 10
