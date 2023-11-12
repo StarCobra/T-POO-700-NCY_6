@@ -12,16 +12,27 @@ export const useMoyenStore = defineStore({
     id: 'moyenStore',
     state: ()=> ({
         // Initialisez cet état avec les données du graphique
+        labels: ['Max delay', 'Moy delay', 'On Time', 'Moy Advance', 'Max Advance', 'Absence'],
         datasets: [
             {
-                type: 'bar',
-                label: 'Day Hours',
-                data: [],
+                label: 'All time',
+                backgroundColor: 'rgba(179,181,198,0.2)',
+                borderColor: 'rgba(179,181,198,1)',
+                pointBackgroundColor: 'rgba(179,181,198,1)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(179,181,198,1)',
+                data: [30, 30, 30, 30, 30, 30]
             },
             {
-                type: 'bar',
-                label: 'Night Hours',
-                data: [],
+                label: 'Month',
+                backgroundColor: 'rgba(255,99,132,0.2)',
+                borderColor: 'rgba(255,99,132,1)',
+                pointBackgroundColor: 'rgba(255,99,132,1)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(255,99,132,1)',
+                data: [20, 45, 25, 20, 30, 45]
             },
         ],
     }),

@@ -1,3 +1,5 @@
+// TimeChart.vue
+
 <script>
 import { computed, onBeforeMount } from 'vue';
 import { useTimeStore } from '@/stores/TimeChartStore';
@@ -21,10 +23,6 @@ export default {
   },
   setup() {
     const timeStore = useTimeStore();
-
-    let data = null;
-    let isLoaded = false;
-
     const options = {
       responsive: true,
       maintainAspectRatio: false
@@ -32,34 +30,11 @@ export default {
 
     onBeforeMount(async () => {
       await timeStore.fetchData();
-
-      const timeData = computed(() => timeStore?.datasets);
-
-      if (timeData.value) {
-        data = {
-          labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          datasets: [
-            {
-              type: timeData.value[0]?.type || '',
-              label: timeData.value[0]?.label || '',
-              backgroundColor: '#f87979',
-              data: timeData.value[0]?.data || 0
-            },
-            {
-              type: timeData.value[1]?.type || '',
-              label: timeData.value[1]?.label || '',
-              backgroundColor: '#0096ff',
-              data: timeData.value[1]?.data || 0
-            }
-          ],
-        };
-        isLoaded = true;
-      }
     });
 
     return {
-      isLoaded,
-      data,
+      isLoaded: computed(() => timeStore.isLoaded),
+      data: computed(() => timeStore.chartData),
       options,
     };
   },

@@ -51,7 +51,6 @@ export default {
 </script>
 
 <template>
+  <button>select</button>
   <Radar id="my-chart-id" :options="chartOptions" :data="chartData" />
 </template>
-
-<style scoped></style>

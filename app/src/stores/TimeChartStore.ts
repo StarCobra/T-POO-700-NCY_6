@@ -10,20 +10,9 @@ import { setClockPacks } from '@/function/getTimeWorking';
 
 export const useTimeStore = defineStore({
   id: 'timeStore',
-  state: ()=> ({
-    // Initialisez cet état avec les données du graphique
-    datasets: [
-      {
-        type: 'bar',
-        label: 'Day Hours',
-        data: [],
-      },
-      {
-        type: 'bar',
-        label: 'Night Hours',
-        data: [],
-      },
-    ],
+  state: () => ({
+    chartData: null,
+    isLoaded: false,
   }),
   actions: {
     fetchData: async function () {
@@ -31,32 +20,51 @@ export const useTimeStore = defineStore({
         const fetchedUsers: User[] = (await getAllUsers()) as User[];
         const userDatas: UserData[] = [];
         const dataToAdd = {
-            dayData: [],
-            nightData: []
+          dayData: [],
+          nightData: [],
         };
 
-        fetchedUsers.map(async (fetchedUser: User) => {
-          /** Récupération des Clocks et WorkingTimes par User **/
-          const [userClock, userWorkingTime] = await Promise.all([
-            getClocks(new Clock(undefined, fetchedUser?.id)),
-            getWorkingTimes(fetchedUser),
-          ]);
+        await Promise.all(
+            fetchedUsers.map(async (fetchedUser: User) => {
+              const [userClock, userWorkingTime] = await Promise.all([
+                getClocks(new Clock(undefined, fetchedUser?.id)),
+                getWorkingTimes(fetchedUser),
+              ]);
 
-          /** Création d'un tableau d'object contenant toutes les données Clocks, WorkingTimes et Users **/
-          const userData = new UserData(fetchedUser, userClock as Clock[], userWorkingTime as WorkingTime[]);
-          userDatas.push(userData);
+              const userData = new UserData(
+                  fetchedUser,
+                  userClock as Clock[],
+                  userWorkingTime as WorkingTime[]
+              );
+              userDatas.push(userData);
 
-          /** Création d'un tableau d'object contenant les heures de pointages ainsi que le temps de travail de jour / nuit **/
-          const pairClocks = setClockPacks(userData?.clocks);
-          pairClocks.map((clockPack) => {
-            dataToAdd.dayData.push(clockPack?.day);
-            dataToAdd.nightData.push(clockPack?.night);
-          });
-        });
+              const pairClocks = setClockPacks(userData?.clocks);
+              pairClocks.forEach((clockPack) => {
+                dataToAdd.dayData.push(clockPack?.day);
+                dataToAdd.nightData.push(clockPack?.night);
+              });
+            })
+        );
 
-        /** Données nécessaire pour le graphique **/
-        this.datasets[0].data = dataToAdd?.dayData;
-        this.datasets[1].data = dataToAdd?.nightData;
+        this.chartData = {
+          labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          datasets: [
+            {
+              type: 'bar',
+              label: 'Day Hours',
+              backgroundColor: '#f87979',
+              data: dataToAdd?.dayData,
+            },
+            {
+              type: 'bar',
+              label: 'Night Hours',
+              backgroundColor: '#0096ff',
+              data: dataToAdd?.nightData,
+            },
+          ],
+        };
+
+        this.isLoaded = true;
       } catch (error) {
         console.error('Erreur lors de la récupération des données :', error);
       }
