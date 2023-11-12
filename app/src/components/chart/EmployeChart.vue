@@ -9,8 +9,8 @@ import {
   Legend
 } from 'chart.js';
 import { Line } from 'vue-chartjs';
-import { useEmployeStore } from "@/stores/EmployeChartStore";
-import { computed, onBeforeMount } from "vue";
+import { useEmployeStore } from '@/stores/EmployeChartStore';
+import { computed, onBeforeMount } from 'vue';
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
@@ -24,7 +24,7 @@ export default {
     const options = {
       responsive: true,
       maintainAspectRatio: false
-    }
+    };
 
     onBeforeMount(async () => {
       await timeStore.fetchData();
@@ -33,15 +33,13 @@ export default {
     return {
       isLoaded: computed(() => timeStore.isLoaded),
       data: computed(() => timeStore.chartData),
-      options,
+      options
     };
-  },
+  }
 };
 </script>
 
 <template>
-    <Line v-if="isLoaded" id="my-chart-id" :options="options" :data="data" />
-    <div v-else>
-      Loading...
-    </div>
+  <Line v-if="isLoaded" id="my-chart-id" :options="options" :data="data" />
+  <div v-else>Loading...</div>
 </template>

@@ -1,12 +1,12 @@
 import type { Clock } from '@/class/Clock';
 import { ClockPack } from '@/class/Clock';
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
 export function getClocksDayNight(firstClock: string, secondClock: string) {
   const startDate = new Date(firstClock).getTime();
   const endDate = new Date(secondClock).getTime();
-  const dayHour = new Date(`${dayjs(startDate).format("YYYY-MM-DD")} 05:00:00`).getTime();
-  const nightHour = new Date(`${dayjs(startDate).format("YYYY-MM-DD")} 22:00:00`).getTime();
+  const dayHour = new Date(`${dayjs(startDate).format('YYYY-MM-DD')} 05:00:00`).getTime();
+  const nightHour = new Date(`${dayjs(startDate).format('YYYY-MM-DD')} 22:00:00`).getTime();
 
   let dayMinutes = 0;
   let nightMinutes = 0;
@@ -15,7 +15,7 @@ export function getClocksDayNight(firstClock: string, secondClock: string) {
     if (startDate >= dayHour && endDate <= nightHour) {
       // Les deux dates sont avant 22:00:00
       dayMinutes = (endDate - startDate) / 60000;
-    } else if (startDate >= nightHour && endDate <= dayHour + 24*60*60*1000) {
+    } else if (startDate >= nightHour && endDate <= dayHour + 24 * 60 * 60 * 1000) {
       // Les deux dates sont après 22:00:00
       nightMinutes = (endDate - startDate) / 60000;
     } else {
@@ -38,7 +38,11 @@ export function setClockPacks(clocks: Clock[]) {
     const firstClockState = clocks[i].status;
     const secondClockState = clocks[i + 1].status;
 
-    if ((new Date(secondClock).getTime() - new Date(firstClock).getTime() > 0) && (firstClockState && !secondClockState)) {
+    if (
+      new Date(secondClock).getTime() - new Date(firstClock).getTime() > 0 &&
+      firstClockState &&
+      !secondClockState
+    ) {
       res.push(getClocksDayNight(firstClock, secondClock));
     }
   }

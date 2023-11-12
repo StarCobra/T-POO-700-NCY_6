@@ -13,7 +13,6 @@ export default {
     AppWorkingTime,
     AppDashboard
   }
-
 };
 
 //if user is not logged in, redirect to login page
@@ -22,7 +21,6 @@ const username = localStorage.getItem('username');
 // if (username === null) {
 //   window.location.href = '/login';
 // }
-
 </script>
 
 <template>

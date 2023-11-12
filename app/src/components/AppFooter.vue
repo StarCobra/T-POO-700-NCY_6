@@ -9,7 +9,7 @@
 <style scoped>
 .footer-container {
   position: absolute;
-  bottom:0px;
+  bottom: 0px;
   width: 100%;
   padding: 12px 12px;
   display: flex;

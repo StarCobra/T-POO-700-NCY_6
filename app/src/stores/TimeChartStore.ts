@@ -7,13 +7,13 @@ import { Clock } from '@/class/Clock';
 import { WorkingTime } from '@/class/WorkingTime';
 import { UserData } from '@/class/UserData';
 import { setClockPacks } from '@/function/getTimeWorking';
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
 export const useTimeStore = defineStore({
   id: 'timeStore',
   state: () => ({
     chartData: null,
-    isLoaded: false,
+    isLoaded: false
   }),
   actions: {
     fetchData: async function () {
@@ -27,26 +27,26 @@ export const useTimeStore = defineStore({
         };
 
         await Promise.all(
-            fetchedUsers.map(async (fetchedUser: User) => {
-              const [userClock, userWorkingTime] = await Promise.all([
-                getClocks(new Clock(undefined, fetchedUser?.id)),
-                getWorkingTimes(fetchedUser),
-              ]);
+          fetchedUsers.map(async (fetchedUser: User) => {
+            const [userClock, userWorkingTime] = await Promise.all([
+              getClocks(new Clock(undefined, fetchedUser?.id)),
+              getWorkingTimes(fetchedUser)
+            ]);
 
-              const userData = new UserData(
-                  fetchedUser,
-                  userClock as Clock[],
-                  userWorkingTime as WorkingTime[]
-              );
-              userDatas.push(userData);
+            const userData = new UserData(
+              fetchedUser,
+              userClock as Clock[],
+              userWorkingTime as WorkingTime[]
+            );
+            userDatas.push(userData);
 
-              const pairClocks = setClockPacks(userData?.clocks);
-              pairClocks.forEach((clockPack) => {
-                dataToAdd.dayData.push(clockPack?.day);
-                dataToAdd.nightData.push(clockPack?.night);
-                dataToAdd.labelDay.push(dayjs(clockPack?.start).format('dddd'));
-              });
-            })
+            const pairClocks = setClockPacks(userData?.clocks);
+            pairClocks.forEach((clockPack) => {
+              dataToAdd.dayData.push(clockPack?.day);
+              dataToAdd.nightData.push(clockPack?.night);
+              dataToAdd.labelDay.push(dayjs(clockPack?.start).format('dddd'));
+            });
+          })
         );
 
         this.chartData = {
@@ -56,21 +56,21 @@ export const useTimeStore = defineStore({
               type: 'bar',
               label: 'Day Hours',
               backgroundColor: '#f87979',
-              data: dataToAdd?.dayData,
+              data: dataToAdd?.dayData
             },
             {
               type: 'bar',
               label: 'Night Hours',
               backgroundColor: '#0096ff',
-              data: dataToAdd?.nightData,
-            },
-          ],
+              data: dataToAdd?.nightData
+            }
+          ]
         };
 
         this.isLoaded = true;
       } catch (error) {
         console.error('Erreur lors de la récupération des données :', error);
       }
-    },
-  },
+    }
+  }
 });

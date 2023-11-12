@@ -9,10 +9,10 @@ import {
   BarElement,
   CategoryScale,
   LinearScale
-} from 'chart.js'
-import { Bar } from 'vue-chartjs'
+} from 'chart.js';
+import { Bar } from 'vue-chartjs';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default {
   name: 'TimeChart',
@@ -24,7 +24,7 @@ export default {
     const options = {
       responsive: true,
       maintainAspectRatio: false
-    }
+    };
 
     onBeforeMount(async () => {
       await timeStore.fetchData();
@@ -33,17 +33,15 @@ export default {
     return {
       isLoaded: computed(() => timeStore.isLoaded),
       data: computed(() => timeStore.chartData),
-      options,
+      options
     };
-  },
+  }
 };
 </script>
 
 <template>
   <div>
     <Bar v-if="isLoaded" id="my-chart-id" :options="options" :data="data" />
-    <div v-else>
-      Loading...
-    </div>
+    <div v-else>Loading...</div>
   </div>
 </template>
