@@ -7,15 +7,15 @@ export async function getWorkingTimes(user: User, $event?: Event) {
   }
   try {
     const fetchWorkingTime = await fetch(`http://localhost:4000/api/workingtimes/${user.id}`)
-      .then((response) => response.json())
-      .then((data) => data.data);
+        .then((response) => response.json())
+        .then((data) => data.data);
 
     const promiseWorkingTime = await fetchWorkingTime.map(async (workingTime: any) => {
       return new WorkingTime(
-        workingTime.id,
-        workingTime.userId,
-        workingTime.start,
-        workingTime.end
+          workingTime.id,
+          workingTime.userId,
+          workingTime.start,
+          workingTime.end
       );
     });
 
@@ -26,6 +26,41 @@ export async function getWorkingTimes(user: User, $event?: Event) {
     console.log(e);
   }
 }
+export async function getWorkingTimesHours(
+    user: User,
+    startDate: string,
+    endDate: string,
+    $event?: Event
+) {
+  if ($event !== undefined) {
+    $event.preventDefault();
+  }
+
+  try {
+    const fetchWorkingTime = await fetch(
+        `http://localhost:4000/api/workingtimes/${user?.id}?start=${startDate}&end=${endDate}`
+    )
+        .then((response) => response.json())
+        .then((data) => data.data);
+
+    const promiseWorkingTime = await fetchWorkingTime.map(async (workingTime: any) => {
+      return new WorkingTime(
+          workingTime.id,
+          workingTime.userId,
+          workingTime.start,
+          workingTime.end
+      );
+    });
+
+    const workingTimes: WorkingTime[] = await Promise.all(promiseWorkingTime);
+
+    return workingTimes;
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+}
+
 export async function createWorkingTime(workingTime: WorkingTime, $event?: Event) {
   if ($event != undefined) {
     $event.preventDefault();
@@ -42,8 +77,8 @@ export async function createWorkingTime(workingTime: WorkingTime, $event?: Event
         }
       })
     })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+        .then((response) => response.json())
+        .then((data) => console.log(data));
   } catch (e) {
     console.log(e);
   }

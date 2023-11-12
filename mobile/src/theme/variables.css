@@ -267,6 +267,17 @@ html {
           -16px -16px 32px #343434;
 }
 
+.body-form-item-profile{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background: #dddddd;
+  border-radius: 25px;
+  width: calc(100% - 8px);
+  padding: 8px;
+}
+
 .body-form-flex-item {
   width: 100%;
   padding: 8px;
@@ -274,6 +285,8 @@ html {
   flex-direction: column;
   gap: 16px;
 }
+
+
 
 .body-form-title {
   align-self: center;
@@ -315,6 +328,13 @@ html {
   display: flex;
   flex-direction: row;
   justify-content: end;
+  gap: 8px;
+}
+
+.body-row-input{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   gap: 8px;
 }
 

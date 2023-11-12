@@ -9,6 +9,10 @@ import { IonApp, IonRouterOutlet } from '@ionic/vue';
 
 import { defineComponent } from 'vue';
 
+const username = localStorage.getItem('username');
+if (username == null && window.location.pathname !== '/login') {
+  window.location.href = '/login';
+}
 import Example from './component/NavBar.vue';
 
 export default defineComponent({

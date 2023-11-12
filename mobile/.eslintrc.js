@@ -1,20 +1,31 @@
+/* eslint-env node */
+require('@rushstack/eslint-patch/modern-module-resolution')
+
 module.exports = {
   root: true,
-  env: {
-    node: true
-  },
-  'extends': [
+  extends: [
     'plugin:vue/vue3-essential',
     'eslint:recommended',
-    '@vue/typescript/recommended'
+    '@vue/eslint-config-typescript',
+    '@vue/prettier',
   ],
+  plugins: ['prettier'],
   parserOptions: {
-    ecmaVersion: 2020
+    parser: '@typescript-eslint/parser',
+    ecmaVersion: 'latest',
+  },
+  env: {
+    browser: true,
+    node: true,
   },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'vue/no-deprecated-slot-attribute': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-  }
-}
+    'prettier/prettier': ['error', { 'endOfLine': 'auto' }], // règles de prettier
+    'indent': ['error', 2], // 2 espaces pour l'indentation
+    'semi': ['error', 'always'], // point-virgule obligatoire
+    'arrow-spacing': ['error', { 'before': true, 'after': true }], // espaces autour des fonctions fléchées
+    'no-console': 'error', // pas de console.log
+    'max-len': ['error', { 'code': 100 }], // longueur de ligne max
+  },
+};
+
+
