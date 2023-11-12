@@ -7,10 +7,20 @@ import { Clock } from '@/class/Clock';
 import { WorkingTime } from '@/class/WorkingTime';
 import { UserData } from '@/class/UserData';
 
+type ChartData = {
+  labels: string[];
+  datasets: {
+    label: string;
+    data: number[];
+    backgroundColor: string[];
+    hoverOffset: number;
+  }[];
+};
+
 export const useRetardStore = defineStore({
   id: 'retardStore',
   state: () => ({
-    chartData: null,
+    chartData: null as null | ChartData,
     isLoaded: false
   }),
   actions: {

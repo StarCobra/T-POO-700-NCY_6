@@ -8,10 +8,22 @@ import { Clock } from '@/class/Clock';
 import type { WorkingTime } from '@/class/WorkingTime';
 import dayjs from 'dayjs';
 
+type ChartData = {
+  labels: string[];
+  datasets: {
+    type: string;
+    label: string;
+    backgroundColor: string;
+    data: number[];
+    fill: boolean;
+    tension: number;
+  }[];
+};
+
 export const useEmployeStore = defineStore({
   id: 'employeStore',
   state: () => ({
-    chartData: null,
+    chartData: null as null | ChartData,
     isLoaded: false
   }),
   actions: {
